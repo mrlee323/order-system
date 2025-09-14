@@ -18,12 +18,25 @@
               "category": "beverages",
               "subcategory": "espresso",
               "options": {
-                "hot": { "price": 3000, "stock": 50, "available": true },
-                "ice": { "price": 3200, "stock": 30, "available": true }
-              },
-              "requiredOptions": {
-                "hot": true,
-                "ice": true
+                "required": [
+                  {
+                    "id": "temperature",
+                    "title": "온도",
+                    "type": "single",
+                    "required": true,
+                    "choices": [
+                      {
+                        "id": "hot",
+                        "title": "Hot",
+                        "price": 3000,
+                        "stock": 100,
+                        "available": true
+                      }
+                    ]
+                  }
+                ],
+                "optional": [],
+                "additions": []
               }
             },
             {
@@ -34,12 +47,32 @@
               "category": "beverages",
               "subcategory": "espresso",
               "options": {
-                "hot": { "price": 3500, "stock": 80, "available": true },
-                "ice": { "price": 3700, "stock": 70, "available": true }
-              },
-              "requiredOptions": {
-                "hot": true,
-                "ice": true
+                "required": [
+                  {
+                    "id": "temperature",
+                    "title": "온도",
+                    "type": "single",
+                    "required": true,
+                    "choices": [
+                      {
+                        "id": "hot",
+                        "title": "Hot",
+                        "price": 3500,
+                        "stock": 80,
+                        "available": true
+                      },
+                      {
+                        "id": "ice",
+                        "title": "Ice",
+                        "price": 3700,
+                        "stock": 70,
+                        "available": true
+                      }
+                    ]
+                  }
+                ],
+                "optional": [],
+                "additions": []
               }
             },
             {
@@ -50,8 +83,55 @@
               "category": "beverages",
               "subcategory": "espresso",
               "options": {
-                "hot": { "price": 4000, "stock": 60, "available": true },
-                "ice": { "price": 4200, "stock": 40, "available": true }
+                "required": [
+                  {
+                    "id": "temperature",
+                    "title": "온도",
+                    "type": "single",
+                    "required": true,
+                    "choices": [
+                      {
+                        "id": "hot",
+                        "title": "Hot",
+                        "price": 4000,
+                        "stock": 60,
+                        "available": true
+                      },
+                      {
+                        "id": "ice",
+                        "title": "Ice",
+                        "price": 4200,
+                        "stock": 40,
+                        "available": true
+                      }
+                    ]
+                  }
+                ],
+                "optional": [
+                  {
+                    "id": "milk",
+                    "title": "Milk Type",
+                    "type": "single",
+                    "required": false,
+                    "default": "regular",
+                    "choices": [
+                      { "id": "regular", "title": "일반우유", "price": 0 },
+                      { "id": "soy", "title": "두유", "price": 500 },
+                      { "id": "oat", "title": "오트밀크", "price": 700 }
+                    ]
+                  }
+                ],
+                "additions": [
+                  {
+                    "id": "topping",
+                    "title": "추가 옵션",
+                    "type": "multi",
+                    "required": false,
+                    "choices": [
+                      { "id": "extra_shot", "title": "샷 추가", "price": 1000 }
+                    ]
+                  }
+                ]
               }
             },
             {
@@ -62,8 +142,55 @@
               "category": "beverages",
               "subcategory": "espresso",
               "options": {
-                "hot": { "price": 4500, "stock": 40, "available": true },
-                "ice": { "price": 4700, "stock": 35, "available": true }
+                "required": [
+                  {
+                    "id": "temperature",
+                    "title": "온도",
+                    "type": "single",
+                    "required": true,
+                    "choices": [
+                      {
+                        "id": "hot",
+                        "title": "Hot",
+                        "price": 4500,
+                        "stock": 40,
+                        "available": true
+                      },
+                      {
+                        "id": "ice",
+                        "title": "Ice",
+                        "price": 4700,
+                        "stock": 35,
+                        "available": true
+                      }
+                    ]
+                  }
+                ],
+                "optional": [
+                  {
+                    "id": "milk",
+                    "title": "Milk Type",
+                    "type": "single",
+                    "required": false,
+                    "default": "regular",
+                    "choices": [
+                      { "id": "regular", "title": "일반우유", "price": 0 },
+                      { "id": "soy", "title": "두유", "price": 500 },
+                      { "id": "oat", "title": "오트밀크", "price": 700 }
+                    ]
+                  }
+                ],
+                "additions": [
+                  {
+                    "id": "topping",
+                    "title": "추가 옵션",
+                    "type": "multi",
+                    "required": false,
+                    "choices": [
+                      { "id": "extra_shot", "title": "샷 추가", "price": 1000 }
+                    ]
+                  }
+                ]
               }
             },
             {
@@ -74,8 +201,55 @@
               "category": "beverages",
               "subcategory": "espresso",
               "options": {
-                "hot": { "price": 4300, "stock": 50, "available": true },
-                "ice": { "price": 4500, "stock": 45, "available": true }
+                "required": [
+                  {
+                    "id": "temperature",
+                    "title": "온도",
+                    "type": "single",
+                    "required": true,
+                    "choices": [
+                      {
+                        "id": "hot",
+                        "title": "Hot",
+                        "price": 4300,
+                        "stock": 50,
+                        "available": true
+                      },
+                      {
+                        "id": "ice",
+                        "title": "Ice",
+                        "price": 4500,
+                        "stock": 45,
+                        "available": true
+                      }
+                    ]
+                  }
+                ],
+                "optional": [
+                  {
+                    "id": "milk",
+                    "title": "Milk Type",
+                    "type": "single",
+                    "required": false,
+                    "default": "regular",
+                    "choices": [
+                      { "id": "regular", "title": "일반우유", "price": 0 },
+                      { "id": "soy", "title": "두유", "price": 500 },
+                      { "id": "oat", "title": "오트밀크", "price": 700 }
+                    ]
+                  }
+                ],
+                "additions": [
+                  {
+                    "id": "topping",
+                    "title": "추가 옵션",
+                    "type": "multi",
+                    "required": false,
+                    "choices": [
+                      { "id": "extra_shot", "title": "샷 추가", "price": 1000 }
+                    ]
+                  }
+                ]
               }
             },
             {
@@ -86,8 +260,55 @@
               "category": "beverages",
               "subcategory": "espresso",
               "options": {
-                "hot": { "price": 4800, "stock": 40, "available": true },
-                "ice": { "price": 5000, "stock": 35, "available": true }
+                "required": [
+                  {
+                    "id": "temperature",
+                    "title": "온도",
+                    "type": "single",
+                    "required": true,
+                    "choices": [
+                      {
+                        "id": "hot",
+                        "title": "Hot",
+                        "price": 4800,
+                        "stock": 40,
+                        "available": true
+                      },
+                      {
+                        "id": "ice",
+                        "title": "Ice",
+                        "price": 5000,
+                        "stock": 35,
+                        "available": true
+                      }
+                    ]
+                  }
+                ],
+                "optional": [
+                  {
+                    "id": "milk",
+                    "title": "Milk Type",
+                    "type": "single",
+                    "required": false,
+                    "default": "regular",
+                    "choices": [
+                      { "id": "regular", "title": "일반우유", "price": 0 },
+                      { "id": "soy", "title": "두유", "price": 500 },
+                      { "id": "oat", "title": "오트밀크", "price": 700 }
+                    ]
+                  }
+                ],
+                "additions": [
+                  {
+                    "id": "topping",
+                    "title": "추가 옵션",
+                    "type": "multi",
+                    "required": false,
+                    "choices": [
+                      { "id": "extra_shot", "title": "샷 추가", "price": 1000 }
+                    ]
+                  }
+                ]
               }
             }
           ]
@@ -105,8 +326,32 @@
               "category": "beverages",
               "subcategory": "tea",
               "options": {
-                "hot": { "price": 3500, "stock": 40, "available": true },
-                "ice": { "price": 3700, "stock": 30, "available": true }
+                "required": [
+                  {
+                    "id": "temperature",
+                    "title": "온도",
+                    "type": "single",
+                    "required": true,
+                    "choices": [
+                      {
+                        "id": "hot",
+                        "title": "Hot",
+                        "price": 3500,
+                        "stock": 40,
+                        "available": true
+                      },
+                      {
+                        "id": "ice",
+                        "title": "Ice",
+                        "price": 3700,
+                        "stock": 30,
+                        "available": true
+                      }
+                    ]
+                  }
+                ],
+                "optional": [],
+                "additions": []
               }
             },
             {
@@ -117,7 +362,25 @@
               "category": "beverages",
               "subcategory": "tea",
               "options": {
-                "ice": { "price": 3500, "stock": 50, "available": true }
+                "required": [
+                  {
+                    "id": "temperature",
+                    "title": "온도",
+                    "type": "single",
+                    "required": true,
+                    "choices": [
+                      {
+                        "id": "ice",
+                        "title": "Ice",
+                        "price": 3600,
+                        "stock": 40,
+                        "available": true
+                      }
+                    ]
+                  }
+                ],
+                "optional": [],
+                "additions": []
               }
             },
             {
@@ -127,9 +390,34 @@
               "thumbnail": "https://images.unsplash.com/photo-1498604636225-6b87a314baa0?q=80&w=1552&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
               "category": "beverages",
               "subcategory": "tea",
+
               "options": {
-                "hot": { "price": 3600, "stock": 40, "available": true },
-                "ice": { "price": 3800, "stock": 25, "available": true }
+                "required": [
+                  {
+                    "id": "temperature",
+                    "title": "온도",
+                    "type": "single",
+                    "required": true,
+                    "choices": [
+                      {
+                        "id": "hot",
+                        "title": "Hot",
+                        "price": 3600,
+                        "stock": 40,
+                        "available": true
+                      },
+                      {
+                        "id": "ice",
+                        "title": "Ice",
+                        "price": 3800,
+                        "stock": 25,
+                        "available": true
+                      }
+                    ]
+                  }
+                ],
+                "optional": [],
+                "additions": []
               }
             },
             {
@@ -140,8 +428,32 @@
               "category": "beverages",
               "subcategory": "tea",
               "options": {
-                "hot": { "price": 3700, "stock": 35, "available": true },
-                "ice": { "price": 3900, "stock": 20, "available": true }
+                "required": [
+                  {
+                    "id": "temperature",
+                    "title": "온도",
+                    "type": "single",
+                    "required": true,
+                    "choices": [
+                      {
+                        "id": "hot",
+                        "title": "Hot",
+                        "price": 3700,
+                        "stock": 35,
+                        "available": true
+                      },
+                      {
+                        "id": "ice",
+                        "title": "Ice",
+                        "price": 3900,
+                        "stock": 20,
+                        "available": true
+                      }
+                    ]
+                  }
+                ],
+                "optional": [],
+                "additions": []
               }
             }
           ]
@@ -159,8 +471,45 @@
               "category": "beverages",
               "subcategory": "others",
               "options": {
-                "hot": { "price": 4000, "stock": 50, "available": true },
-                "ice": { "price": 4200, "stock": 45, "available": true }
+                "required": [
+                  {
+                    "id": "temperature",
+                    "title": "온도",
+                    "type": "single",
+                    "required": true,
+                    "choices": [
+                      {
+                        "id": "hot",
+                        "title": "Hot",
+                        "price": 4300,
+                        "stock": 30,
+                        "available": true
+                      },
+                      {
+                        "id": "ice",
+                        "title": "Ice",
+                        "price": 4500,
+                        "stock": 25,
+                        "available": true
+                      }
+                    ]
+                  }
+                ],
+                "optional": [
+                  {
+                    "id": "milk",
+                    "title": "Milk Type",
+                    "type": "single",
+                    "required": false,
+                    "default": "regular",
+                    "choices": [
+                      { "id": "regular", "title": "일반우유", "price": 0 },
+                      { "id": "soy", "title": "두유", "price": 500 },
+                      { "id": "oat", "title": "오트밀크", "price": 700 }
+                    ]
+                  }
+                ],
+                "additions": []
               }
             },
             {
@@ -170,8 +519,45 @@
               "thumbnail": "https://plus.unsplash.com/premium_photo-1661562031871-317d77e64290?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
               "subcategory": "others",
               "options": {
-                "hot": { "price": 4300, "stock": 30, "available": true },
-                "ice": { "price": 4500, "stock": 25, "available": true }
+                "required": [
+                  {
+                    "id": "temperature",
+                    "title": "온도",
+                    "type": "single",
+                    "required": true,
+                    "choices": [
+                      {
+                        "id": "hot",
+                        "title": "Hot",
+                        "price": 4300,
+                        "stock": 30,
+                        "available": true
+                      },
+                      {
+                        "id": "ice",
+                        "title": "Ice",
+                        "price": 4500,
+                        "stock": 25,
+                        "available": true
+                      }
+                    ]
+                  }
+                ],
+                "optional": [
+                  {
+                    "id": "milk",
+                    "title": "Milk Type",
+                    "type": "single",
+                    "required": false,
+                    "default": "regular",
+                    "choices": [
+                      { "id": "regular", "title": "일반우유", "price": 0 },
+                      { "id": "soy", "title": "두유", "price": 500 },
+                      { "id": "oat", "title": "오트밀크", "price": 700 }
+                    ]
+                  }
+                ],
+                "additions": []
               }
             },
             {
@@ -182,7 +568,25 @@
               "category": "beverages",
               "subcategory": "others",
               "options": {
-                "ice": { "price": 4800, "stock": 30, "available": true }
+                "required": [
+                  {
+                    "id": "temperature",
+                    "title": "온도",
+                    "type": "single",
+                    "required": true,
+                    "choices": [
+                      {
+                        "id": "ice",
+                        "title": "Ice",
+                        "price": 4800,
+                        "stock": 30,
+                        "available": true
+                      }
+                    ]
+                  }
+                ],
+                "optional": [],
+                "additions": []
               }
             },
             {
@@ -193,7 +597,25 @@
               "category": "beverages",
               "subcategory": "others",
               "options": {
-                "ice": { "price": 5000, "stock": 25, "available": true }
+                "required": [
+                  {
+                    "id": "temperature",
+                    "title": "온도",
+                    "type": "single",
+                    "required": true,
+                    "choices": [
+                      {
+                        "id": "ice",
+                        "title": "Ice",
+                        "price": 5000,
+                        "stock": 25,
+                        "available": true
+                      }
+                    ]
+                  }
+                ],
+                "optional": [],
+                "additions": []
               }
             }
           ]
@@ -323,8 +745,29 @@
               "stock": 30,
               "available": true,
               "options": {
-                "warmable": true,
-                "additions": [{ "id": 1, "title": "크림치즈", "price": 1000 }]
+                "required": [],
+                "optional": [
+                  {
+                    "id": "warmable",
+                    "title": "데움 여부",
+                    "type": "single",
+                    "required": false,
+                    "default": "cold",
+                    "choices": [
+                      { "id": "warm", "title": "데움", "price": 0 },
+                      { "id": "cold", "title": "데우지 않음", "price": 0 }
+                    ]
+                  }
+                ],
+                "additions": [
+                  {
+                    "id": "spread",
+                    "title": "추가 스프레드",
+                    "type": "multi",
+                    "required": false,
+                    "choices": [{ "id": 1, "title": "크림치즈", "price": 1000 }]
+                  }
+                ]
               }
             },
             {
@@ -338,8 +781,29 @@
               "stock": 20,
               "available": true,
               "options": {
-                "warmable": true,
-                "additions": [{ "id": 1, "title": "크림치즈", "price": 1000 }]
+                "required": [],
+                "optional": [
+                  {
+                    "id": "warmable",
+                    "title": "데움 여부",
+                    "type": "single",
+                    "required": false,
+                    "default": "cold",
+                    "choices": [
+                      { "id": "warm", "title": "데움", "price": 0 },
+                      { "id": "cold", "title": "데우지 않음", "price": 0 }
+                    ]
+                  }
+                ],
+                "additions": [
+                  {
+                    "id": "spread",
+                    "title": "추가 스프레드",
+                    "type": "multi",
+                    "required": false,
+                    "choices": [{ "id": 1, "title": "크림치즈", "price": 1000 }]
+                  }
+                ]
               }
             },
             {
@@ -353,8 +817,29 @@
               "stock": 25,
               "available": true,
               "options": {
-                "warmable": true,
-                "additions": [{ "id": 2, "title": "딸기잼", "price": 800 }]
+                "required": [],
+                "optional": [
+                  {
+                    "id": "warmable",
+                    "title": "데움 여부",
+                    "type": "single",
+                    "required": false,
+                    "default": "cold",
+                    "choices": [
+                      { "id": "warm", "title": "데움", "price": 0 },
+                      { "id": "cold", "title": "데우지 않음", "price": 0 }
+                    ]
+                  }
+                ],
+                "additions": [
+                  {
+                    "id": "spread",
+                    "title": "추가 스프레드",
+                    "type": "multi",
+                    "required": false,
+                    "choices": [{ "id": 1, "title": "크림치즈", "price": 1000 }]
+                  }
+                ]
               }
             },
             {
@@ -368,8 +853,29 @@
               "stock": 15,
               "available": true,
               "options": {
-                "warmable": true,
-                "additions": [{ "id": 2, "title": "딸기잼", "price": 800 }]
+                "required": [],
+                "optional": [
+                  {
+                    "id": "warmable",
+                    "title": "데움 여부",
+                    "type": "single",
+                    "required": false,
+                    "default": "cold",
+                    "choices": [
+                      { "id": "warm", "title": "데움", "price": 0 },
+                      { "id": "cold", "title": "데우지 않음", "price": 0 }
+                    ]
+                  }
+                ],
+                "additions": [
+                  {
+                    "id": "spread",
+                    "title": "추가 스프레드",
+                    "type": "multi",
+                    "required": false,
+                    "choices": [{ "id": 1, "title": "크림치즈", "price": 1000 }]
+                  }
+                ]
               }
             }
           ]
