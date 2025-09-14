@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import QueryProvider from "@/components/QueryProvider";
+import { CartProvider } from "@/contexts/CartContext";
 
 export const metadata: Metadata = {
   title: "POS & QR Ordering System",
@@ -14,7 +16,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ko">
-      <body className="min-h-screen bg-gray-50 text-gray-900">{children}</body>
+      <body className="min-h-screen bg-gray-50 text-gray-900">
+        <QueryProvider>
+          <CartProvider>{children}</CartProvider>
+        </QueryProvider>
+      </body>
     </html>
   );
 }
