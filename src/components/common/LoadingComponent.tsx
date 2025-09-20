@@ -1,4 +1,4 @@
-const Loading = () => {
+export default function LoadingComponent() {
   return (
     <div className="flex items-center justify-center h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
       <div className="text-center">
@@ -7,6 +7,4 @@ const Loading = () => {
       </div>
     </div>
   );
-};
-
-export default Loading;
+}

@@ -5,10 +5,11 @@ import { MenuItem, CategoryType, MenuResponse } from "@/lib/types/menu";
 import useImagePreloader from "@/hooks/useImagePreloader";
 
 import MenuCard from "./MenuCard";
+import MenuDetailModal from "./MenuDetailModal";
 
-type MenuListProps = {
+interface MenuListProps {
   data: MenuResponse | undefined;
-};
+}
 
 export default function MenuList({ data }: MenuListProps) {
   const [selectedCategory, setSelectedCategory] = useState<CategoryType>("all");
@@ -133,6 +134,11 @@ export default function MenuList({ data }: MenuListProps) {
           </div>
         </div>
       </div>
+      <MenuDetailModal
+        isOpen={!!selectedMenuItem}
+        onClose={() => setSelectedMenuItem(null)}
+        item={selectedMenuItem}
+      />
     </div>
   );
 }

@@ -4,13 +4,17 @@ import { useState } from "react";
 import Image from "next/image";
 import { MenuItem } from "@/lib/types/menu";
 
-interface Props {
+interface MenuCardProps {
   item: MenuItem;
   onClick: (item: MenuItem) => void;
   allImagesLoaded: boolean;
 }
 
-export default function MenuCard({ item, onClick, allImagesLoaded }: Props) {
+export default function MenuCard({
+  item,
+  onClick,
+  allImagesLoaded,
+}: MenuCardProps) {
   const [imageError, setImageError] = useState(false);
 
   const getBasePrice = () => {
