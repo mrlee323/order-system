@@ -1,4 +1,4 @@
-import { MenuResponse } from "./types";
+import { MenuResponse } from "./types/menu";
 
 export async function fetchMenu(): Promise<MenuResponse> {
   const res = await fetch("/data/menu.json");
