@@ -6,6 +6,7 @@ export interface OptionChoice {
   price: number;
   stock?: number;
   available?: boolean;
+  maxQuantity?: number; // 최대 선택 가능한 수량
 }
 
 export interface OptionGroup {
