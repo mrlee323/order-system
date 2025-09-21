@@ -20,13 +20,14 @@
               "options": {
                 "required": [
                   {
-                    "id": "temperature",
+                    "id": 1,
+                    "type": "temperature",
                     "title": "음료 종류",
-                    "type": "single",
+                    "allowMultiple": false,
                     "required": true,
                     "choices": [
                       {
-                        "id": "hot",
+                        "id": 1,
                         "title": "Hot",
                         "price": 3000,
                         "stock": 100,
@@ -36,7 +37,7 @@
                   }
                 ],
                 "optional": [],
-                "additions": []
+                "extras": []
               }
             },
             {
@@ -49,20 +50,21 @@
               "options": {
                 "required": [
                   {
-                    "id": "temperature",
+                    "id": 1,
+                    "type": "temperature",
                     "title": "음료 종류",
-                    "type": "single",
+                    "allowMultiple": false,
                     "required": true,
                     "choices": [
                       {
-                        "id": "hot",
+                        "id": 1,
                         "title": "Hot",
                         "price": 3500,
                         "stock": 80,
                         "available": true
                       },
                       {
-                        "id": "ice",
+                        "id": 2,
                         "title": "Ice",
                         "price": 3700,
                         "stock": 70,
@@ -72,7 +74,7 @@
                   }
                 ],
                 "optional": [],
-                "additions": []
+                "extras": []
               }
             },
             {
@@ -85,20 +87,21 @@
               "options": {
                 "required": [
                   {
-                    "id": "temperature",
+                    "id": 1,
+                    "type": "temperature",
                     "title": "음료 종류",
-                    "type": "single",
+                    "allowMultiple": false,
                     "required": true,
                     "choices": [
                       {
-                        "id": "hot",
+                        "id": 1,
                         "title": "Hot",
                         "price": 4000,
                         "stock": 60,
                         "available": true
                       },
                       {
-                        "id": "ice",
+                        "id": 2,
                         "title": "Ice",
                         "price": 4200,
                         "stock": 40,
@@ -109,34 +112,35 @@
                 ],
                 "optional": [
                   {
-                    "id": "milk",
+                    "id": 2,
+                    "type": "milk",
                     "title": "Milk Type",
-                    "type": "single",
+                    "allowMultiple": false,
                     "required": false,
-                    "default": "regular",
+                    "default": 1,
                     "choices": [
-                      { "id": "regular", "title": "일반우유", "price": 0 },
-                      { "id": "soy", "title": "두유", "price": 500 },
-                      { "id": "oat", "title": "오트밀크", "price": 700 }
+                      { "id": 1, "title": "일반우유", "price": 0 },
+                      { "id": 2, "title": "두유", "price": 500 },
+                      { "id": 3, "title": "오트밀크", "price": 700 }
                     ]
-                  }
-                ],
-                "additions": [
+                  },
                   {
-                    "id": "topping",
-                    "title": "추가 옵션",
-                    "type": "multi",
+                    "id": 3,
+                    "type": "shot",
+                    "title": "샷 추가",
+                    "allowMultiple": true,
                     "required": false,
                     "choices": [
                       {
-                        "id": "extra_shot",
+                        "id": 1,
                         "title": "샷 추가",
                         "price": 1000,
                         "maxQuantity": 5
                       }
                     ]
                   }
-                ]
+                ],
+                "extras": []
               }
             },
             {
@@ -149,20 +153,21 @@
               "options": {
                 "required": [
                   {
-                    "id": "temperature",
+                    "id": 1,
+                    "type": "temperature",
                     "title": "음료 종류",
-                    "type": "single",
+                    "allowMultiple": false,
                     "required": true,
                     "choices": [
                       {
-                        "id": "hot",
+                        "id": 1,
                         "title": "Hot",
                         "price": 4500,
                         "stock": 40,
                         "available": true
                       },
                       {
-                        "id": "ice",
+                        "id": 2,
                         "title": "Ice",
                         "price": 4700,
                         "stock": 35,
@@ -173,34 +178,35 @@
                 ],
                 "optional": [
                   {
-                    "id": "milk",
+                    "id": 2,
+                    "type": "milk",
                     "title": "Milk Type",
-                    "type": "single",
+                    "allowMultiple": false,
                     "required": false,
-                    "default": "regular",
+                    "default": 1,
                     "choices": [
-                      { "id": "regular", "title": "일반우유", "price": 0 },
-                      { "id": "soy", "title": "두유", "price": 500 },
-                      { "id": "oat", "title": "오트밀크", "price": 700 }
+                      { "id": 1, "title": "일반우유", "price": 0 },
+                      { "id": 2, "title": "두유", "price": 500 },
+                      { "id": 3, "title": "오트밀크", "price": 700 }
                     ]
-                  }
-                ],
-                "additions": [
+                  },
                   {
-                    "id": "topping",
-                    "title": "추가 옵션",
-                    "type": "multi",
+                    "id": 3,
+                    "type": "shot",
+                    "title": "샷 추가",
+                    "allowMultiple": true,
                     "required": false,
                     "choices": [
                       {
-                        "id": "extra_shot",
+                        "id": 1,
                         "title": "샷 추가",
                         "price": 1000,
                         "maxQuantity": 5
                       }
                     ]
                   }
-                ]
+                ],
+                "extras": []
               }
             },
             {
@@ -213,20 +219,21 @@
               "options": {
                 "required": [
                   {
-                    "id": "temperature",
+                    "id": 1,
+                    "type": "temperature",
                     "title": "음료 종류",
-                    "type": "single",
+                    "allowMultiple": false,
                     "required": true,
                     "choices": [
                       {
-                        "id": "hot",
+                        "id": 1,
                         "title": "Hot",
                         "price": 4300,
                         "stock": 50,
                         "available": true
                       },
                       {
-                        "id": "ice",
+                        "id": 2,
                         "title": "Ice",
                         "price": 4500,
                         "stock": 45,
@@ -237,34 +244,35 @@
                 ],
                 "optional": [
                   {
-                    "id": "milk",
+                    "id": 2,
+                    "type": "milk",
                     "title": "Milk Type",
-                    "type": "single",
+                    "allowMultiple": false,
                     "required": false,
-                    "default": "regular",
+                    "default": 1,
                     "choices": [
-                      { "id": "regular", "title": "일반우유", "price": 0 },
-                      { "id": "soy", "title": "두유", "price": 500 },
-                      { "id": "oat", "title": "오트밀크", "price": 700 }
+                      { "id": 1, "title": "일반우유", "price": 0 },
+                      { "id": 2, "title": "두유", "price": 500 },
+                      { "id": 3, "title": "오트밀크", "price": 700 }
                     ]
-                  }
-                ],
-                "additions": [
+                  },
                   {
-                    "id": "topping",
-                    "title": "추가 옵션",
-                    "type": "multi",
+                    "id": 3,
+                    "type": "shot",
+                    "title": "샷 추가",
+                    "allowMultiple": true,
                     "required": false,
                     "choices": [
                       {
-                        "id": "extra_shot",
+                        "id": 1,
                         "title": "샷 추가",
                         "price": 1000,
                         "maxQuantity": 5
                       }
                     ]
                   }
-                ]
+                ],
+                "extras": []
               }
             },
             {
@@ -277,20 +285,21 @@
               "options": {
                 "required": [
                   {
-                    "id": "temperature",
+                    "id": 1,
+                    "type": "temperature",
                     "title": "음료 종류",
-                    "type": "single",
+                    "allowMultiple": false,
                     "required": true,
                     "choices": [
                       {
-                        "id": "hot",
+                        "id": 1,
                         "title": "Hot",
                         "price": 4800,
                         "stock": 40,
                         "available": true
                       },
                       {
-                        "id": "ice",
+                        "id": 2,
                         "title": "Ice",
                         "price": 5000,
                         "stock": 35,
@@ -301,34 +310,35 @@
                 ],
                 "optional": [
                   {
-                    "id": "milk",
+                    "id": 2,
+                    "type": "milk",
                     "title": "Milk Type",
-                    "type": "single",
+                    "allowMultiple": false,
                     "required": false,
-                    "default": "regular",
+                    "default": 1,
                     "choices": [
-                      { "id": "regular", "title": "일반우유", "price": 0 },
-                      { "id": "soy", "title": "두유", "price": 500 },
-                      { "id": "oat", "title": "오트밀크", "price": 700 }
+                      { "id": 1, "title": "일반우유", "price": 0 },
+                      { "id": 2, "title": "두유", "price": 500 },
+                      { "id": 3, "title": "오트밀크", "price": 700 }
                     ]
-                  }
-                ],
-                "additions": [
+                  },
                   {
-                    "id": "topping",
-                    "title": "추가 옵션",
-                    "type": "multi",
+                    "id": 3,
+                    "type": "shot",
+                    "title": "샷 추가",
+                    "allowMultiple": true,
                     "required": false,
                     "choices": [
                       {
-                        "id": "extra_shot",
+                        "id": 1,
                         "title": "샷 추가",
                         "price": 1000,
                         "maxQuantity": 5
                       }
                     ]
                   }
-                ]
+                ],
+                "extras": []
               }
             }
           ]
@@ -348,20 +358,21 @@
               "options": {
                 "required": [
                   {
-                    "id": "temperature",
+                    "id": 1,
+                    "type": "temperature",
                     "title": "음료 종류",
-                    "type": "single",
+                    "allowMultiple": false,
                     "required": true,
                     "choices": [
                       {
-                        "id": "hot",
+                        "id": 1,
                         "title": "Hot",
                         "price": 3500,
                         "stock": 40,
                         "available": true
                       },
                       {
-                        "id": "ice",
+                        "id": 2,
                         "title": "Ice",
                         "price": 3700,
                         "stock": 30,
@@ -371,7 +382,7 @@
                   }
                 ],
                 "optional": [],
-                "additions": []
+                "extras": []
               }
             },
             {
@@ -384,13 +395,14 @@
               "options": {
                 "required": [
                   {
-                    "id": "temperature",
+                    "id": 1,
+                    "type": "temperature",
                     "title": "음료 종류",
-                    "type": "single",
+                    "allowMultiple": false,
                     "required": true,
                     "choices": [
                       {
-                        "id": "ice",
+                        "id": 2,
                         "title": "Ice",
                         "price": 3600,
                         "stock": 40,
@@ -400,7 +412,7 @@
                   }
                 ],
                 "optional": [],
-                "additions": []
+                "extras": []
               }
             },
             {
@@ -414,20 +426,21 @@
               "options": {
                 "required": [
                   {
-                    "id": "temperature",
+                    "id": 1,
+                    "type": "temperature",
                     "title": "음료 종류",
-                    "type": "single",
+                    "allowMultiple": false,
                     "required": true,
                     "choices": [
                       {
-                        "id": "hot",
+                        "id": 1,
                         "title": "Hot",
                         "price": 3600,
                         "stock": 40,
                         "available": true
                       },
                       {
-                        "id": "ice",
+                        "id": 2,
                         "title": "Ice",
                         "price": 3800,
                         "stock": 25,
@@ -437,7 +450,7 @@
                   }
                 ],
                 "optional": [],
-                "additions": []
+                "extras": []
               }
             },
             {
@@ -450,20 +463,21 @@
               "options": {
                 "required": [
                   {
-                    "id": "temperature",
+                    "id": 1,
+                    "type": "temperature",
                     "title": "음료 종류",
-                    "type": "single",
+                    "allowMultiple": false,
                     "required": true,
                     "choices": [
                       {
-                        "id": "hot",
+                        "id": 1,
                         "title": "Hot",
                         "price": 3700,
                         "stock": 35,
                         "available": true
                       },
                       {
-                        "id": "ice",
+                        "id": 2,
                         "title": "Ice",
                         "price": 3900,
                         "stock": 20,
@@ -473,7 +487,7 @@
                   }
                 ],
                 "optional": [],
-                "additions": []
+                "extras": []
               }
             }
           ]
@@ -493,20 +507,21 @@
               "options": {
                 "required": [
                   {
-                    "id": "temperature",
+                    "id": 1,
+                    "type": "temperature",
                     "title": "음료 종류",
-                    "type": "single",
+                    "allowMultiple": false,
                     "required": true,
                     "choices": [
                       {
-                        "id": "hot",
+                        "id": 1,
                         "title": "Hot",
                         "price": 4300,
                         "stock": 30,
                         "available": true
                       },
                       {
-                        "id": "ice",
+                        "id": 2,
                         "title": "Ice",
                         "price": 4500,
                         "stock": 25,
@@ -517,19 +532,20 @@
                 ],
                 "optional": [
                   {
-                    "id": "milk",
+                    "id": 2,
+                    "type": "milk",
                     "title": "Milk Type",
-                    "type": "single",
+                    "allowMultiple": false,
                     "required": false,
-                    "default": "regular",
+                    "default": 1,
                     "choices": [
-                      { "id": "regular", "title": "일반우유", "price": 0 },
-                      { "id": "soy", "title": "두유", "price": 500 },
-                      { "id": "oat", "title": "오트밀크", "price": 700 }
+                      { "id": 1, "title": "일반우유", "price": 0 },
+                      { "id": 2, "title": "두유", "price": 500 },
+                      { "id": 3, "title": "오트밀크", "price": 700 }
                     ]
                   }
                 ],
-                "additions": []
+                "extras": []
               }
             },
             {
@@ -541,20 +557,21 @@
               "options": {
                 "required": [
                   {
-                    "id": "temperature",
+                    "id": 1,
+                    "type": "temperature",
                     "title": "음료 종류",
-                    "type": "single",
+                    "allowMultiple": false,
                     "required": true,
                     "choices": [
                       {
-                        "id": "hot",
+                        "id": 1,
                         "title": "Hot",
                         "price": 4300,
                         "stock": 30,
                         "available": true
                       },
                       {
-                        "id": "ice",
+                        "id": 2,
                         "title": "Ice",
                         "price": 4500,
                         "stock": 25,
@@ -565,19 +582,20 @@
                 ],
                 "optional": [
                   {
-                    "id": "milk",
+                    "id": 2,
+                    "type": "milk",
                     "title": "Milk Type",
-                    "type": "single",
+                    "allowMultiple": false,
                     "required": false,
-                    "default": "regular",
+                    "default": 1,
                     "choices": [
-                      { "id": "regular", "title": "일반우유", "price": 0 },
-                      { "id": "soy", "title": "두유", "price": 500 },
-                      { "id": "oat", "title": "오트밀크", "price": 700 }
+                      { "id": 1, "title": "일반우유", "price": 0 },
+                      { "id": 2, "title": "두유", "price": 500 },
+                      { "id": 3, "title": "오트밀크", "price": 700 }
                     ]
                   }
                 ],
-                "additions": []
+                "extras": []
               }
             },
             {
@@ -590,13 +608,14 @@
               "options": {
                 "required": [
                   {
-                    "id": "temperature",
+                    "id": 1,
+                    "type": "temperature",
                     "title": "음료 종류",
-                    "type": "single",
+                    "allowMultiple": false,
                     "required": true,
                     "choices": [
                       {
-                        "id": "ice",
+                        "id": 2,
                         "title": "Ice",
                         "price": 4800,
                         "stock": 30,
@@ -606,7 +625,7 @@
                   }
                 ],
                 "optional": [],
-                "additions": []
+                "extras": []
               }
             },
             {
@@ -619,13 +638,14 @@
               "options": {
                 "required": [
                   {
-                    "id": "temperature",
+                    "id": 1,
+                    "type": "temperature",
                     "title": "음료 종류",
-                    "type": "single",
+                    "allowMultiple": false,
                     "required": true,
                     "choices": [
                       {
-                        "id": "ice",
+                        "id": 2,
                         "title": "Ice",
                         "price": 5000,
                         "stock": 25,
@@ -635,7 +655,7 @@
                   }
                 ],
                 "optional": [],
-                "additions": []
+                "extras": []
               }
             }
           ]
@@ -768,24 +788,39 @@
                 "required": [],
                 "optional": [
                   {
-                    "id": "warmable",
+                    "id": 4,
+                    "type": "warmable",
                     "title": "데움 여부",
-                    "type": "single",
+                    "allowMultiple": false,
                     "required": false,
-                    "default": "cold",
+                    "default": 2,
                     "choices": [
-                      { "id": "warm", "title": "데움", "price": 0 },
-                      { "id": "cold", "title": "데우지 않음", "price": 0 }
+                      { "id": 1, "title": "데움", "price": 0 },
+                      { "id": 2, "title": "데우지 않음", "price": 0 }
                     ]
                   }
                 ],
-                "additions": [
+                "extras": [
                   {
-                    "id": "spread",
+                    "id": 5,
+                    "type": "spread",
                     "title": "추가 스프레드",
-                    "type": "multi",
+                    "allowMultiple": true,
                     "required": false,
-                    "choices": [{ "id": 1, "title": "크림치즈", "price": 1000 }]
+                    "choices": [
+                      {
+                        "id": 1,
+                        "title": "크림치즈",
+                        "price": 1000,
+                        "maxQuantity": 3
+                      },
+                      {
+                        "id": 2,
+                        "title": "버터",
+                        "price": 700,
+                        "maxQuantity": 3
+                      }
+                    ]
                   }
                 ]
               }
@@ -804,24 +839,39 @@
                 "required": [],
                 "optional": [
                   {
-                    "id": "warmable",
+                    "id": 4,
+                    "type": "warmable",
                     "title": "데움 여부",
-                    "type": "single",
+                    "allowMultiple": false,
                     "required": false,
-                    "default": "cold",
+                    "default": 2,
                     "choices": [
-                      { "id": "warm", "title": "데움", "price": 0 },
-                      { "id": "cold", "title": "데우지 않음", "price": 0 }
+                      { "id": 1, "title": "데움", "price": 0 },
+                      { "id": 2, "title": "데우지 않음", "price": 0 }
                     ]
                   }
                 ],
-                "additions": [
+                "extras": [
                   {
-                    "id": "spread",
+                    "id": 5,
+                    "type": "spread",
                     "title": "추가 스프레드",
-                    "type": "multi",
+                    "allowMultiple": true,
                     "required": false,
-                    "choices": [{ "id": 1, "title": "크림치즈", "price": 1000 }]
+                    "choices": [
+                      {
+                        "id": 1,
+                        "title": "크림치즈",
+                        "price": 1000,
+                        "maxQuantity": 3
+                      },
+                      {
+                        "id": 2,
+                        "title": "버터",
+                        "price": 700,
+                        "maxQuantity": 3
+                      }
+                    ]
                   }
                 ]
               }
@@ -840,24 +890,45 @@
                 "required": [],
                 "optional": [
                   {
-                    "id": "warmable",
+                    "id": 4,
+                    "type": "warmable",
                     "title": "데움 여부",
-                    "type": "single",
+                    "allowMultiple": false,
                     "required": false,
-                    "default": "cold",
+                    "default": 2,
                     "choices": [
-                      { "id": "warm", "title": "데움", "price": 0 },
-                      { "id": "cold", "title": "데우지 않음", "price": 0 }
+                      { "id": 1, "title": "데움", "price": 0 },
+                      { "id": 2, "title": "데우지 않음", "price": 0 }
                     ]
                   }
                 ],
-                "additions": [
+                "extras": [
                   {
-                    "id": "spread",
+                    "id": 5,
+                    "type": "spread",
                     "title": "추가 스프레드",
-                    "type": "multi",
+                    "allowMultiple": true,
                     "required": false,
-                    "choices": [{ "id": 1, "title": "크림치즈", "price": 1000 }]
+                    "choices": [
+                      {
+                        "id": 1,
+                        "title": "크림치즈",
+                        "price": 1000,
+                        "maxQuantity": 3
+                      },
+                      {
+                        "id": 2,
+                        "title": "버터",
+                        "price": 700,
+                        "maxQuantity": 3
+                      },
+                      {
+                        "id": 3,
+                        "title": "딸기잼",
+                        "price": 700,
+                        "maxQuantity": 3
+                      }
+                    ]
                   }
                 ]
               }
@@ -876,24 +947,45 @@
                 "required": [],
                 "optional": [
                   {
-                    "id": "warmable",
+                    "id": 4,
+                    "type": "warmable",
                     "title": "데움 여부",
-                    "type": "single",
+                    "allowMultiple": false,
                     "required": false,
-                    "default": "cold",
+                    "default": 2,
                     "choices": [
-                      { "id": "warm", "title": "데움", "price": 0 },
-                      { "id": "cold", "title": "데우지 않음", "price": 0 }
+                      { "id": 1, "title": "데움", "price": 0 },
+                      { "id": 2, "title": "데우지 않음", "price": 0 }
                     ]
                   }
                 ],
-                "additions": [
+                "extras": [
                   {
-                    "id": "spread",
+                    "id": 5,
+                    "type": "spread",
                     "title": "추가 스프레드",
-                    "type": "multi",
+                    "allowMultiple": true,
                     "required": false,
-                    "choices": [{ "id": 1, "title": "크림치즈", "price": 1000 }]
+                    "choices": [
+                      {
+                        "id": 1,
+                        "title": "크림치즈",
+                        "price": 1000,
+                        "maxQuantity": 3
+                      },
+                      {
+                        "id": 2,
+                        "title": "버터",
+                        "price": 700,
+                        "maxQuantity": 3
+                      },
+                      {
+                        "id": 3,
+                        "title": "딸기잼",
+                        "price": 700,
+                        "maxQuantity": 3
+                      }
+                    ]
                   }
                 ]
               }

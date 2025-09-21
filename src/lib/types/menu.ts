@@ -1,7 +1,7 @@
 export type CategoryType = "all" | "beverages" | "food";
 
 export interface OptionChoice {
-  id: string;
+  id: number;
   title: string;
   price: number;
   stock?: number;
@@ -10,11 +10,12 @@ export interface OptionChoice {
 }
 
 export interface OptionGroup {
-  id: string;
+  id: number;
+  type: string;
   title: string;
-  type: "single" | "multi";
+  allowMultiple: boolean;
   required: boolean;
-  default?: string;
+  default?: number;
   choices: OptionChoice[];
 }
 
@@ -29,7 +30,7 @@ export interface MenuItem {
   options?: {
     required?: OptionGroup[];
     optional?: OptionGroup[];
-    additions?: OptionGroup[];
+    extras?: OptionGroup[];
   };
   available?: boolean;
   stock?: number;
@@ -51,4 +52,8 @@ export interface Category {
 
 export interface MenuResponse {
   categories: Category[];
+}
+
+export interface SelectedOptions {
+  [groupId: number]: { [choiceId: number]: number };
 }
