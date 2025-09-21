@@ -6,7 +6,7 @@ export interface OptionChoice {
   price: number;
   stock?: number;
   available?: boolean;
-  maxQuantity?: number; // 최대 선택 가능한 수량
+  maxQuantity?: number;
 }
 
 export interface OptionGroup {
@@ -52,8 +52,4 @@ export interface Category {
 
 export interface MenuResponse {
   categories: Category[];
-}
-
-export interface SelectedOptions {
-  [groupId: number]: { [choiceId: number]: number };
 }
