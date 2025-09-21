@@ -1,10 +1,17 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 
 const useImagePreloader = (imageUrls: string[]) => {
   const [loadedImages, setLoadedImages] = useState<Set<string>>(new Set());
   const [allLoaded, setAllLoaded] = useState(false);
 
+  const memoizedImageUrls = useMemo(() => imageUrls, [imageUrls.join(",")]);
+
   useEffect(() => {
+    if (memoizedImageUrls.length === 0) {
+      setAllLoaded(true);
+      return;
+    }
+
     const loadImage = (url: string) => {
       return new Promise<void>((resolve) => {
         const img = new Image();
@@ -17,10 +24,13 @@ const useImagePreloader = (imageUrls: string[]) => {
       });
     };
 
-    Promise.all(imageUrls.map(loadImage)).then(() => {
+    setLoadedImages(new Set());
+    setAllLoaded(false);
+
+    Promise.all(memoizedImageUrls.map(loadImage)).then(() => {
       setAllLoaded(true);
     });
-  }, [imageUrls]);
+  }, [memoizedImageUrls]);
 
   return { loadedImages, allLoaded };
 };
