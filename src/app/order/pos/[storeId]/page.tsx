@@ -1,23 +1,41 @@
-import { useMenuQuery } from "@/lib/quries/menu";
+import { Suspense } from "react";
 
-import Loading from "@/components/common/LoadingComponent";
+import { fetchMenu } from "@/lib/api";
 import ErrorComponent from "@/components/common/ErrorComponent";
-import MenuList from "@/components/menu/MenuList";
+import LoadingComponent from "@/components/common/LoadingComponent";
+import MenuPageClient from "@/components/menu/MenuPageClient";
 
-export default function Page() {
-  const { data, isLoading, error } = useMenuQuery();
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ storeId: string }>;
+}) {
+  const { storeId } = await params;
 
-  if (isLoading) {
-    return <Loading />;
-  }
+  return {
+    title: `POS 시스템 - 매장 ${storeId}`,
+    description: "매장 주문 관리 시스템",
+  };
+}
 
-  if (error) {
+export default async function Page({
+  params,
+}: {
+  params: Promise<{ storeId: string }>;
+}) {
+  try {
+    const { storeId } = await params;
+    const [initialData] = await Promise.all([fetchMenu()]);
+
+    return (
+      <main className="h-screen">
+        <Suspense fallback={<LoadingComponent />}>
+          <MenuPageClient initialData={initialData} storeId={storeId} />
+        </Suspense>
+      </main>
+    );
+  } catch (error) {
+    console.error("페이지 초기화 실패:", error);
     return <ErrorComponent />;
   }
-
-  return (
-    <main className="h-screen">
-      <MenuList data={data} />
-    </main>
-  );
 }
