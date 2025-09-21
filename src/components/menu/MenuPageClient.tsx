@@ -6,6 +6,7 @@ import { useOnlineStatus } from "@/hooks/useOnlineStatus";
 import { useMenuQuery } from "@/lib/quries/menu";
 import { MenuResponse } from "@/lib/types/menu";
 import MenuList from "@/components/menu/MenuList";
+import Cart from "@/components/cart/Cart";
 
 interface MenuPageClientProps {
   initialData: MenuResponse;
@@ -57,6 +58,9 @@ export default function MenuPageClient({
 
       {/* 메인 메뉴 */}
       <MenuList data={displayData} />
+
+      {/* 장바구니 */}
+      <Cart />
 
       {error && (
         <div className="fixed bottom-4 right-4 bg-yellow-100 border border-yellow-400 text-yellow-800 px-4 py-3 rounded-lg shadow-lg">

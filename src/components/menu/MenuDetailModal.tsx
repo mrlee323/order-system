@@ -3,12 +3,10 @@
 import { useState, useEffect, useMemo, useCallback } from "react";
 import Image from "next/image";
 
-import {
-  MenuItem,
-  OptionChoice,
-  OptionGroup,
-  SelectedOptions,
-} from "@/lib/types/menu";
+import { MenuItem, OptionChoice } from "@/lib/types/menu";
+import { SelectedOption } from "@/lib/types/cart";
+import { useCartStore } from "@/lib/stores/cartStore";
+import { calculateTotalPrice } from "@/lib/utils/priceCalculator";
 import MenuOptionItem from "./MenuOptionItem";
 
 interface MenuDetailModalProps {
@@ -23,7 +21,8 @@ export default function MenuDetailModal({
   onClose,
 }: MenuDetailModalProps) {
   const [quantity, setQuantity] = useState(1);
-  const [selectedOptions, setSelectedOptions] = useState<SelectedOptions>({});
+  const [selectedOptions, setSelectedOptions] = useState<SelectedOption[]>([]);
+  const { addItem } = useCartStore();
   const basePrice =
     item?.price ||
     item?.options?.required?.[0]?.default ||
@@ -39,25 +38,12 @@ export default function MenuDetailModal({
     ];
   }, [item]);
 
-  const initializeGroup = (
-    group: OptionGroup
-  ): { [choiceId: number]: number } => {
-    if (group.required || group.default) {
-      const choiceId = group.required
-        ? group.choices[0].id
-        : (group.default as number);
-      return { [choiceId]: 1 };
-    }
-
-    return {};
-  };
-
   useEffect(() => {
     if (isOpen && item) {
       setQuantity(1);
-      setSelectedOptions({});
+      setSelectedOptions([]);
 
-      const initialOptions: SelectedOptions = {};
+      const initialOptions: SelectedOption[] = [];
 
       const optionGroups = [
         ...(item.options?.required || []),
@@ -65,9 +51,21 @@ export default function MenuDetailModal({
       ];
 
       optionGroups.forEach((group) => {
-        const groupOptions = initializeGroup(group);
-        if (Object.keys(groupOptions).length > 0) {
-          initialOptions[group.id] = groupOptions;
+        if (group.required || group.default) {
+          const choiceId = group.required
+            ? group.choices[0].id
+            : (group.default as number);
+
+          const choice = group.choices.find((c) => c.id === choiceId);
+
+          if (choice) {
+            initialOptions.push({
+              groupId: group.id,
+              choiceId: choiceId,
+              quantity: 1,
+              choice,
+            });
+          }
         }
       });
 
@@ -90,66 +88,40 @@ export default function MenuDetailModal({
 
   const getQuantityValue = useCallback(
     (groupId: number, choiceId: number): number => {
-      const groupOptions = selectedOptions[groupId];
-      return groupOptions?.[choiceId] || 0;
+      const option = selectedOptions.find(
+        (opt) => opt.groupId === groupId && opt.choiceId === choiceId
+      );
+      return option?.quantity || 0;
     },
     [selectedOptions]
   );
 
   const totalPrice = useMemo(() => {
     if (!item) return 0;
-
-    let basePrice = item.price || 0;
-    let optionalPrice = 0;
-    let extrasPrice = 0;
-
-    Object.entries(selectedOptions).forEach(([groupId, groupOptions]) => {
-      const groupIdNum = Number(groupId);
-
-      const isOptional = [
-        ...(item.options?.optional || []),
-        ...(item.options?.required || []),
-      ].some((opt) => opt.id === groupIdNum);
-
-      const isExtras = [...(item.options?.extras || [])].some(
-        (ext) => ext.id === groupIdNum
-      );
-
-      Object.entries(groupOptions).forEach(([choiceId, choiceQuantity]) => {
-        if ((choiceQuantity as number) > 0) {
-          const choice = findChoiceById(groupIdNum, Number(choiceId));
-          const choicePrice = (choice?.price || 0) * (choiceQuantity as number);
-          if (isOptional) {
-            optionalPrice += choicePrice;
-          } else if (isExtras) {
-            extrasPrice += choicePrice;
-          }
-        }
-      });
-    });
-
-    return (basePrice + optionalPrice) * quantity + extrasPrice;
+    return calculateTotalPrice(item, selectedOptions, quantity);
   }, [item, selectedOptions, quantity]);
 
   const handleOptionChange = useCallback(
-    (groupId: number, choiceId: number, isMulti: boolean) => {
+    (groupId: number, choice: OptionChoice, isMulti: boolean) => {
       setSelectedOptions((prev) => {
-        const current = prev[groupId] || {};
+        const existingIndex = prev.findIndex(
+          (opt) => opt.groupId === groupId && opt.choiceId === choice.id
+        );
 
         if (isMulti) {
-          const newQuantity = current[choiceId] > 0 ? 0 : 1;
-          return {
-            ...prev,
-            [groupId]: {
-              ...current,
-              [choiceId]: newQuantity,
-            },
-          };
+          if (existingIndex >= 0) {
+            return prev.filter((_, index) => index !== existingIndex);
+          } else {
+            return [
+              ...prev,
+              { groupId, choiceId: choice.id, quantity: 1, choice },
+            ];
+          }
         } else {
-          return {
-            ...prev,
-            [groupId]: { [choiceId]: 1 },
-          };
+          return [
+            ...prev.filter((opt) => opt.groupId !== groupId),
+            { groupId, choiceId: choice.id, quantity: 1, choice },
+          ];
         }
       });
     },
@@ -157,30 +129,47 @@ export default function MenuDetailModal({
   );
 
   const handleQuantityChange = useCallback(
-    (groupId: number, choiceId: number, newQuantity: number) => {
+    (groupId: number, choice: OptionChoice, newQuantity: number) => {
       setSelectedOptions((prev) => {
-        const current = prev[groupId] || {};
-
         if (newQuantity === 0) {
-          const newGroupOptions = { ...current };
-          delete newGroupOptions[choiceId];
-          return {
-            ...prev,
-            [groupId]: newGroupOptions,
-          };
+          return prev.filter(
+            (opt) => !(opt.groupId === groupId && opt.choiceId === choice.id)
+          );
+        }
+
+        const existingOption = prev.find(
+          (opt) => opt.groupId === groupId && opt.choiceId === choice.id
+        );
+
+        if (existingOption) {
+          return prev.map((opt) =>
+            opt.groupId === groupId && opt.choiceId === choice.id
+              ? { ...opt, quantity: newQuantity }
+              : opt
+          );
         } else {
-          return {
+          return [
             ...prev,
-            [groupId]: {
-              ...current,
-              [choiceId]: newQuantity,
-            },
-          };
+            { groupId, choiceId: choice.id, quantity: newQuantity, choice },
+          ];
         }
       });
     },
     []
   );
+
+  const handleAddToCart = () => {
+    if (!item) return;
+
+    addItem({
+      menuItem: item,
+      selectedOptions,
+      quantity,
+      totalPrice,
+    });
+
+    onClose();
+  };
 
   if (!isOpen || !item) return null;
 
@@ -239,7 +228,6 @@ export default function MenuDetailModal({
                     key={choice.id}
                     choice={choice}
                     group={group}
-                    selectedOptions={selectedOptions}
                     onOptionChange={handleOptionChange}
                     onQuantityChange={handleQuantityChange}
                     getQuantityValue={getQuantityValue}
@@ -260,7 +248,7 @@ export default function MenuDetailModal({
                 >
                   -
                 </button>
-                <span className="px-6 py-3 font-semibold text-lg">
+                <span className="w-20 text-center font-semibold text-lg">
                   {quantity}
                 </span>
                 <button
@@ -280,7 +268,7 @@ export default function MenuDetailModal({
         {/* 하단 버튼 */}
         <div className="p-6 bg-gray-50 border-t border-gray-200 flex-shrink-0">
           <button
-            onClick={() => console.log("add to cart")}
+            onClick={handleAddToCart}
             className="w-full bg-gradient-to-r from-blue-500 via-blue-600 to-indigo-600 text-white py-4 rounded-2xl font-bold text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg active:scale-95"
           >
             장바구니에 추가

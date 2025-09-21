@@ -1,15 +1,18 @@
 "use client";
 
-import { OptionGroup, OptionChoice, SelectedOptions } from "@/lib/types/menu";
+import { OptionGroup, OptionChoice } from "@/lib/types/menu";
 
 interface MenuOptionItemProps {
-  choice: OptionChoice;
   group: OptionGroup;
-  selectedOptions: SelectedOptions;
-  onOptionChange: (groupId: number, choiceId: number, isMulti: boolean) => void;
+  choice: OptionChoice;
+  onOptionChange: (
+    groupId: number,
+    choice: OptionChoice,
+    isMulti: boolean
+  ) => void;
   onQuantityChange: (
     groupId: number,
-    choiceId: number,
+    choice: OptionChoice,
     newQuantity: number
   ) => void;
   getQuantityValue: (groupId: number, choiceId: number) => number;
@@ -18,18 +21,17 @@ interface MenuOptionItemProps {
 export default function MenuOptionItem({
   choice,
   group,
-  selectedOptions,
   onOptionChange,
   onQuantityChange,
   getQuantityValue,
 }: MenuOptionItemProps) {
   const isQuantityChoice = choice.maxQuantity !== undefined;
+  const quantityValue = getQuantityValue(group.id, choice.id);
+  const isSelected = quantityValue > 0;
+  const isDisabled = choice.available === false;
 
   // 수량 옵션 일 경우
   if (isQuantityChoice) {
-    const quantityValue = getQuantityValue(group.id, choice.id);
-    const isSelected = quantityValue > 0;
-
     return (
       <QuantityChoice
         choice={choice}
@@ -42,9 +44,6 @@ export default function MenuOptionItem({
   }
 
   // 일반 옵션 일 경우
-  const isDisabled = choice.available === false;
-  const isSelected = selectedOptions[group.id]?.[choice.id] > 0;
-
   return (
     <RegularChoice
       choice={choice}
@@ -63,7 +62,7 @@ interface QuantityChoiceProps {
   quantityValue: number;
   onQuantityChange: (
     groupId: number,
-    choiceId: number,
+    choice: OptionChoice,
     newQuantity: number
   ) => void;
 }
@@ -104,7 +103,7 @@ function QuantityChoice({
               onClick={() =>
                 onQuantityChange(
                   group.id,
-                  choice.id,
+                  choice,
                   Math.max(0, quantityValue - 1)
                 )
               }
@@ -118,7 +117,7 @@ function QuantityChoice({
               onClick={() =>
                 onQuantityChange(
                   group.id,
-                  choice.id,
+                  choice,
                   Math.min(maxQuantity, quantityValue + 1)
                 )
               }
@@ -139,7 +138,11 @@ interface RegularChoiceProps {
   group: OptionGroup;
   isSelected: boolean;
   isDisabled: boolean;
-  onOptionChange: (groupId: number, choiceId: number, isMulti: boolean) => void;
+  onOptionChange: (
+    groupId: number,
+    choice: OptionChoice,
+    isMulti: boolean
+  ) => void;
 }
 
 function RegularChoice({
@@ -166,9 +169,7 @@ function RegularChoice({
           value={choice.id.toString()}
           checked={isSelected}
           disabled={isDisabled}
-          onChange={() =>
-            onOptionChange(group.id, choice.id, group.allowMultiple)
-          }
+          onChange={() => onOptionChange(group.id, choice, group.allowMultiple)}
           className="mr-3"
         />
         <span className="font-medium text-gray-800">{choice.title}</span>
