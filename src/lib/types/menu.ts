@@ -1,3 +1,5 @@
+export type AccessMode = "tablet" | "mobile" | "kiosk";
+
 export type CategoryType = "all" | "beverages" | "food";
 
 export interface OptionChoice {

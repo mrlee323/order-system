@@ -6,12 +6,14 @@ import useImagePreloader from "@/hooks/useImagePreloader";
 
 import MenuCard from "./MenuCard";
 import MenuDetailModal from "./MenuDetailModal";
+import { AccessMode } from "@/lib/types/menu";
 
 interface MenuListProps {
   data: MenuResponse | undefined;
+  accessMode: AccessMode;
 }
 
-export default function MenuList({ data }: MenuListProps) {
+export default function MenuList({ data, accessMode }: MenuListProps) {
   const [selectedCategory, setSelectedCategory] = useState<CategoryType>("all");
   const [selectedSubCategory, setSelectedSubCategory] = useState<string | null>(
     null

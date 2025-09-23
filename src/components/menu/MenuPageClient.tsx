@@ -4,18 +4,20 @@ import { useEffect, useState } from "react";
 
 import { useOnlineStatus } from "@/hooks/useOnlineStatus";
 import { useMenuQuery } from "@/lib/quries/menu";
-import { MenuResponse } from "@/lib/types/menu";
+import { AccessMode, MenuResponse } from "@/lib/types/menu";
 import MenuList from "@/components/menu/MenuList";
 import Cart from "@/components/cart/Cart";
 
 interface MenuPageClientProps {
   initialData: MenuResponse;
   storeId: string;
+  accessMode: AccessMode;
 }
 
 export default function MenuPageClient({
   initialData,
   storeId,
+  accessMode,
 }: MenuPageClientProps) {
   const [lastSync, setLastSync] = useState<Date | null>(null);
   const { isOnline } = useOnlineStatus();
@@ -30,7 +32,11 @@ export default function MenuPageClient({
   const displayData = error ? initialData : data;
 
   return (
-    <main className="h-screen relative">
+    <main
+      className={`h-screen relative ${
+        accessMode === "mobile" ? "mobile-layout" : "tablet-layout"
+      }`}
+    >
       <div className="absolute top-4 right-4 z-10 flex flex-wrap gap-2">
         <div
           className={`px-3 py-1 rounded-full text-sm font-medium ${
@@ -54,13 +60,17 @@ export default function MenuPageClient({
             <span className="mx-[35px]">-</span>
           )}
         </div>
+
+        <div className="px-3 py-1 rounded-full text-sm font-medium bg-purple-100 text-purple-800">
+          {accessMode === "tablet" ? "📱 태블릿" : "📱 모바일"}
+        </div>
       </div>
 
       {/* 메인 메뉴 */}
-      <MenuList data={displayData} />
+      <MenuList data={displayData} accessMode={accessMode} />
 
       {/* 장바구니 */}
-      <Cart />
+      <Cart accessMode={accessMode} />
 
       {error && (
         <div className="fixed bottom-4 right-4 bg-yellow-100 border border-yellow-400 text-yellow-800 px-4 py-3 rounded-lg shadow-lg">

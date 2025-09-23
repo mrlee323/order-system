@@ -4,8 +4,13 @@ import { useCartStore } from "@/lib/stores/cartStore";
 import { useOnlineStatus } from "@/hooks/useOnlineStatus";
 import { CartItem as CartItemType } from "@/lib/types/cart";
 import CartItem from "./CartItem";
+import { AccessMode } from "@/lib/types/menu";
 
-export default function Cart() {
+interface CartProps {
+  accessMode: AccessMode;
+}
+
+export default function Cart({ accessMode }: CartProps) {
   const {
     items,
     removeItem,
