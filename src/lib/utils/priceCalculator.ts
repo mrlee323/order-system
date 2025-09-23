@@ -6,7 +6,7 @@ export const calculateTotalPrice = (
   selectedOptions: SelectedOption[],
   quantity: number
 ): number => {
-  let basePrice = menuItem.price || 0;
+  const basePrice = menuItem.price || 0;
 
   let optionalPrice = 0;
   let extrasPrice = 0;

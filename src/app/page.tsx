@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function HomePage() {
   return (
     <main className="flex flex-col items-center justify-center min-h-screen text-center p-6">
@@ -7,12 +9,13 @@ export default function HomePage() {
       </p>
 
       <div className="mt-8 space-x-4">
-        <a
+        <Link
           href="/order/1?access=tablet"
+          prefetch={false}
           className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
         >
           테이블 태블릿 주문
-        </a>
+        </Link>
         {/* <a
           href="/order/1?access=mobile"
           className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700"

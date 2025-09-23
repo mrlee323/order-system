@@ -73,19 +73,6 @@ export default function MenuDetailModal({
     }
   }, [isOpen, item]);
 
-  const findChoiceById = (
-    groupId: number,
-    choiceId: number
-  ): OptionChoice | null => {
-    if (!allOptionGroups) return null;
-
-    const group = allOptionGroups.find((g) => g.id === groupId);
-    if (!group) return null;
-
-    const choice = group.choices.find((c) => c.id === choiceId);
-    return choice ?? null;
-  };
-
   const getQuantityValue = useCallback(
     (groupId: number, choiceId: number): number => {
       const option = selectedOptions.find(
