@@ -2,9 +2,9 @@ import { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "POS & QR Ordering System",
-    short_name: "POS-QR",
-    description: "매장 POS(PWA) & QR 주문 시스템",
+    name: "Order System",
+    short_name: "Order",
+    description: "매장 주문 시스템",
     start_url: "/",
     display: "standalone",
     background_color: "#ffffff",

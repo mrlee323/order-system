@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import QueryProvider from "@/components/QueryProvider";
+import QueryProvider from "@/components/common/QueryProvider";
 
 export const metadata: Metadata = {
-  title: "POS & QR Ordering System",
-  description: "매장 POS(PWA) & QR 주문 시스템",
+  title: "Order System",
+  description: "매장 주문 시스템",
   manifest: "/manifest.webmanifest",
 };
 

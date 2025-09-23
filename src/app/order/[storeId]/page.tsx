@@ -13,24 +13,31 @@ export async function generateMetadata({
   const { storeId } = await params;
 
   return {
-    title: `POS 시스템 - 매장 ${storeId}`,
+    title: `주문 시스템 - 매장 ${storeId}`,
     description: "매장 주문 관리 시스템",
   };
 }
 
 export default async function Page({
   params,
+  searchParams,
 }: {
   params: Promise<{ storeId: string }>;
+  searchParams: Promise<{ access?: string }>;
 }) {
   try {
     const { storeId } = await params;
+    const { access } = await searchParams;
     const [initialData] = await Promise.all([fetchMenu()]);
 
     return (
       <main className="h-screen">
         <Suspense fallback={<LoadingComponent />}>
-          <MenuPageClient initialData={initialData} storeId={storeId} />
+          <MenuPageClient
+            initialData={initialData}
+            storeId={storeId}
+            accessMode={access || "tablet"}
+          />
         </Suspense>
       </main>
     );
