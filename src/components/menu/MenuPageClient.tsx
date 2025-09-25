@@ -1,13 +1,11 @@
 "use client";
 
-import { useEffect, useState } from "react";
-
-import { useOnlineStatus } from "@/hooks/useOnlineStatus";
 import { useMenuQuery } from "@/lib/quries/menu";
 import { AccessMode, MenuResponse } from "@/lib/types/menu";
 
 import MenuList from "@/components/menu/MenuList";
 import Cart from "@/components/cart/Cart";
+import { useStoreQuery } from "@/lib/quries/store";
 
 interface MenuPageClientProps {
   initialData: MenuResponse;
@@ -20,15 +18,10 @@ export default function MenuPageClient({
   storeId,
   accessMode,
 }: MenuPageClientProps) {
-  const [lastSync, setLastSync] = useState<Date | null>(null);
-  const { isOnline } = useOnlineStatus();
   const { data, isLoading, error, refetch } = useMenuQuery(storeId, {
     initialData,
   });
-
-  useEffect(() => {
-    setLastSync(new Date());
-  }, [data]);
+  const { data: storeData } = useStoreQuery(storeId);
 
   const displayData = error ? initialData : data;
   return (
@@ -38,7 +31,12 @@ export default function MenuPageClient({
       }`}
     >
       {/* 메인 메뉴 */}
-      <MenuList data={displayData} accessMode={accessMode} />
+      <MenuList
+        data={displayData}
+        storeData={storeData}
+        accessMode={accessMode}
+        isLoading={isLoading}
+      />
 
       {/* 장바구니 */}
       <Cart accessMode={accessMode} />

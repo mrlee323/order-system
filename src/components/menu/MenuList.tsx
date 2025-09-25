@@ -1,28 +1,33 @@
 "use client";
 
 import { useState, useMemo } from "react";
+import Image from "next/image";
+
 import {
   MenuItem,
   CategoryType,
   MenuResponse,
   AccessMode,
 } from "@/lib/types/menu";
-import { useStoreQuery } from "@/lib/quries/store";
+import { Store } from "@/lib/types/store";
 import useImagePreloader from "@/hooks/useImagePreloader";
+
 import MenuCard from "./MenuCard";
 import MenuDetailModal from "./MenuDetailModal";
-import Image from "next/image";
 
 interface MenuListProps {
   data: MenuResponse | undefined;
+  storeData: Store | undefined;
   accessMode: AccessMode;
+  isLoading: boolean;
 }
 
-export default function MenuList({ data, accessMode }: MenuListProps) {
-  const { data: storeData } = useStoreQuery();
-
-  const store = storeData?.item;
-
+export default function MenuList({
+  data,
+  storeData,
+  accessMode,
+  isLoading,
+}: MenuListProps) {
   const [selectedCategory, setSelectedCategory] = useState<CategoryType>("all");
   const [selectedSubCategory, setSelectedSubCategory] = useState<string | null>(
     null
@@ -30,14 +35,13 @@ export default function MenuList({ data, accessMode }: MenuListProps) {
   const [selectedMenuItem, setSelectedMenuItem] = useState<MenuItem | null>(
     null
   );
-
   const categories = useMemo(() => {
     return [
       {
         type: "all",
         title: "전체",
       },
-      ...(data?.categories.map((c) => ({
+      ...(data?.map((c) => ({
         type: c.type,
         title: c.title,
       })) || []),
@@ -46,11 +50,8 @@ export default function MenuList({ data, accessMode }: MenuListProps) {
 
   const subCategories = useMemo(() => {
     if (selectedCategory === "all")
-      return data?.categories.flatMap((c) => c.subcategories) || [];
-    return (
-      data?.categories.find((c) => c.type === selectedCategory)
-        ?.subcategories || []
-    );
+      return data?.flatMap((c) => c.subcategories) || [];
+    return data?.find((c) => c.type === selectedCategory)?.subcategories || [];
   }, [data, selectedCategory]);
 
   const menuList = useMemo(() => {
@@ -87,17 +88,17 @@ export default function MenuList({ data, accessMode }: MenuListProps) {
     <div className="flex portrait:flex-col landscape:flex-row h-screen bg-gradient-to-br from-slate-50 to-blue-50">
       <div className="flex flex-col">
         {/* 스토어 헤더 */}
-        {store && (
+        {storeData && (
           <div className="flex landscape:flex-col portrait:flex-row items-center gap-2 p-4 bg-white">
             <Image
-              src={store.logo || ""}
-              alt={store.name || ""}
+              src={storeData.logo || ""}
+              alt={storeData.name || ""}
               width={50}
               height={50}
               className="rounded-full object-cover"
             />
             <div className="text-lg font-medium text-gray-700">
-              {store.name}
+              {storeData.name}
             </div>
           </div>
         )}
