@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { useOnlineStatus } from "@/hooks/useOnlineStatus";
 import { useMenuQuery } from "@/lib/quries/menu";
 import { AccessMode, MenuResponse } from "@/lib/types/menu";
+
 import MenuList from "@/components/menu/MenuList";
 import Cart from "@/components/cart/Cart";
 
@@ -30,42 +31,12 @@ export default function MenuPageClient({
   }, [data]);
 
   const displayData = error ? initialData : data;
-
   return (
     <main
       className={`h-screen relative ${
         accessMode === "mobile" ? "mobile-layout" : "tablet-layout"
       }`}
     >
-      <div className="absolute top-4 right-4 z-10 flex flex-wrap gap-2">
-        <div
-          className={`px-3 py-1 rounded-full text-sm font-medium ${
-            isOnline ? "bg-green-100 text-green-800" : "bg-red-100 text-red-800"
-          }`}
-        >
-          {isOnline ? "🟢 온라인" : "🔴 오프라인"}
-        </div>
-
-        {isLoading && (
-          <div className="px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-800">
-            🔄 동기화 중...
-          </div>
-        )}
-
-        <div className="px-3 py-1 rounded-full text-sm font-medium bg-gray-100 text-gray-600">
-          마지막 동기화:{" "}
-          {lastSync ? (
-            lastSync.toLocaleTimeString("ko-KR")
-          ) : (
-            <span className="mx-[35px]">-</span>
-          )}
-        </div>
-
-        <div className="px-3 py-1 rounded-full text-sm font-medium bg-purple-100 text-purple-800">
-          {accessMode === "tablet" ? "📱 태블릿" : "📱 모바일"}
-        </div>
-      </div>
-
       {/* 메인 메뉴 */}
       <MenuList data={displayData} accessMode={accessMode} />
 
