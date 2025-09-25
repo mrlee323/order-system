@@ -56,10 +56,7 @@ async function fetchWithRetry(url: string, options: RequestInit = {}) {
 
 export async function fetchMenu(storeId: string): Promise<MenuResponse> {
   try {
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
-    const url = `${baseUrl}/api/menu?storeId=${storeId}`;
-
-    const res = await fetchWithRetry(url, {
+    const res = await fetchWithRetry(`/api/menu?storeId=${storeId}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -92,10 +89,7 @@ export async function fetchMenu(storeId: string): Promise<MenuResponse> {
 
 export async function fetchStore(storeId: string): Promise<Store> {
   try {
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
-    const url = `${baseUrl}/api/store/${storeId}  `;
-
-    const res = await fetchWithRetry(url, {
+    const res = await fetchWithRetry(`/api/store/${storeId}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
