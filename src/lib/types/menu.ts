@@ -52,6 +52,4 @@ export interface Category {
   subcategories: Subcategory[];
 }
 
-export interface MenuResponse {
-  categories: Category[];
-}
+export type MenuResponse = Category[];

@@ -5,6 +5,6 @@ export async function GET() {
   return NextResponse.json({
     code: 200,
     status: "success",
-    items: menuData,
+    items: menuData.items,
   });
 }
