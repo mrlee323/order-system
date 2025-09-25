@@ -1,10 +1,4 @@
-import { Suspense } from "react";
-
-import { fetchMenu } from "@/lib/api";
 import { AccessMode } from "@/lib/types/menu";
-
-import ErrorComponent from "@/components/common/ErrorComponent";
-import LoadingComponent from "@/components/common/LoadingComponent";
 import MenuPageClient from "@/components/menu/MenuPageClient";
 
 export async function generateMetadata({
@@ -27,24 +21,13 @@ export default async function Page({
   params: Promise<{ storeId: string }>;
   searchParams: Promise<{ access?: string }>;
 }) {
-  try {
-    const { storeId } = await params;
-    const { access } = await searchParams;
-    const initialData = await fetchMenu(storeId);
+  const { storeId } = await params;
+  const { access } = await searchParams;
 
-    return (
-      <main className="h-screen">
-        <Suspense fallback={<LoadingComponent />}>
-          <MenuPageClient
-            initialData={initialData}
-            storeId={storeId}
-            accessMode={(access || "tablet") as AccessMode}
-          />
-        </Suspense>
-      </main>
-    );
-  } catch (error) {
-    console.error("페이지 초기화 실패:", error);
-    return <ErrorComponent />;
-  }
+  return (
+    <MenuPageClient
+      storeId={storeId}
+      accessMode={(access || "tablet") as AccessMode}
+    />
+  );
 }
