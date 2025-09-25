@@ -4,6 +4,7 @@ import { fetchMenu } from "@/lib/api";
 import ErrorComponent from "@/components/common/ErrorComponent";
 import LoadingComponent from "@/components/common/LoadingComponent";
 import MenuPageClient from "@/components/menu/MenuPageClient";
+import { AccessMode } from "@/lib/types/menu";
 
 export async function generateMetadata({
   params,
@@ -36,7 +37,7 @@ export default async function Page({
           <MenuPageClient
             initialData={initialData}
             storeId={storeId}
-            accessMode={access || "tablet"}
+            accessMode={(access || "tablet") as AccessMode}
           />
         </Suspense>
       </main>
