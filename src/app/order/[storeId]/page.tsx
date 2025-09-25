@@ -1,10 +1,11 @@
 import { Suspense } from "react";
 
 import { fetchMenu } from "@/lib/api";
+import { AccessMode } from "@/lib/types/menu";
+
 import ErrorComponent from "@/components/common/ErrorComponent";
 import LoadingComponent from "@/components/common/LoadingComponent";
 import MenuPageClient from "@/components/menu/MenuPageClient";
-import { AccessMode } from "@/lib/types/menu";
 
 export async function generateMetadata({
   params,
@@ -29,13 +30,13 @@ export default async function Page({
   try {
     const { storeId } = await params;
     const { access } = await searchParams;
-    const [initialData] = await Promise.all([fetchMenu()]);
+    const initialData = await fetchMenu(storeId);
 
     return (
       <main className="h-screen">
         <Suspense fallback={<LoadingComponent />}>
           <MenuPageClient
-            initialData={initialData.items}
+            initialData={initialData}
             storeId={storeId}
             accessMode={(access || "tablet") as AccessMode}
           />

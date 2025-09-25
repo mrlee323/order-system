@@ -18,15 +18,12 @@ const MENU_RETRY_MAX_DELAY_30_SEC = 30000;
 
 export const useMenuQuery = (
   storeId: string,
-  options?: Omit<
-    UseQueryOptions<ResponseListBase<MenuResponse>, Error>,
-    "queryKey" | "queryFn"
-  >
-): UseQueryResult<ResponseListBase<MenuResponse>, Error> => {
+  options?: Omit<UseQueryOptions<MenuResponse, Error>, "queryKey" | "queryFn">
+): UseQueryResult<MenuResponse, Error> => {
   return useQuery({
     ...options,
     queryKey: [QUERY_KEY.MENU, storeId],
-    queryFn: fetchMenu,
+    queryFn: () => fetchMenu(storeId),
     enabled: !!storeId,
     staleTime: MENU_STALE_TIME_10_MIN,
     gcTime: MENU_GC_TIME_30_MIN,

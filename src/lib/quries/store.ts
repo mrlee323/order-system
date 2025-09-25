@@ -1,15 +1,13 @@
 import { useQuery, UseQueryResult } from "@tanstack/react-query";
 import { Store } from "../types/store";
-import { ResponseItemBase } from "../types/common";
 import { fetchStore } from "../api";
 
-export const useStoreQuery = (): UseQueryResult<
-  ResponseItemBase<Store>,
-  Error
-> => {
+export const useStoreQuery = (
+  storeId: string
+): UseQueryResult<Store, Error> => {
   return useQuery({
-    queryKey: ["store"],
-    queryFn: fetchStore,
+    queryKey: ["store", storeId],
+    queryFn: () => fetchStore(storeId),
     staleTime: Infinity,
     gcTime: Infinity,
     refetchOnWindowFocus: false,
