@@ -57,7 +57,7 @@ async function fetchWithRetry(url: string, options: RequestInit = {}) {
 export async function fetchMenu(storeId: string): Promise<MenuResponse> {
   try {
     const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
-    const url = `${baseUrl}/api/menu`;
+    const url = `${baseUrl}/api/menu?storeId=${storeId}`;
 
     const res = await fetchWithRetry(url, {
       method: "GET",

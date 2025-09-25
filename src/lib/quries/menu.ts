@@ -5,7 +5,6 @@ import {
 } from "@tanstack/react-query";
 import { fetchMenu } from "../api";
 import { MenuResponse } from "../types/menu";
-import { ResponseListBase } from "../types/common";
 
 const QUERY_KEY = {
   MENU: "menu",

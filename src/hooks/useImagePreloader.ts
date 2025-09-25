@@ -4,7 +4,8 @@ const useImagePreloader = (imageUrls: string[]) => {
   const [loadedImages, setLoadedImages] = useState<Set<string>>(new Set());
   const [allLoaded, setAllLoaded] = useState(false);
 
-  const memoizedImageUrls = useMemo(() => imageUrls, [imageUrls.join(",")]);
+  const imageUrlsString = imageUrls.join(",");
+  const memoizedImageUrls = useMemo(() => imageUrls, [imageUrlsString]);
 
   useEffect(() => {
     if (memoizedImageUrls.length === 0) {
