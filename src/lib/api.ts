@@ -1,4 +1,6 @@
 import { MenuResponse } from "./types/menu";
+import { ResponseItemBase, ResponseListBase } from "./types/common";
+import { Store } from "./types/store";
 
 const API_CONFIG = {
   timeout: 10000,
@@ -52,10 +54,10 @@ async function fetchWithRetry(url: string, options: RequestInit = {}) {
   throw lastError!;
 }
 
-export async function fetchMenu(): Promise<MenuResponse> {
+export async function fetchMenu(): Promise<ResponseListBase<MenuResponse>> {
   try {
     const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
-    const url = `${baseUrl}/data/menu.json`;
+    const url = `${baseUrl}/api/menu`;
 
     const res = await fetchWithRetry(url, {
       method: "GET",
@@ -67,7 +69,7 @@ export async function fetchMenu(): Promise<MenuResponse> {
 
     const data = await res.json();
 
-    if (!data || !data.categories || !Array.isArray(data.categories)) {
+    if (data.code !== 200) {
       throw new Error("유효하지 않은 메뉴 데이터 형식입니다.");
     }
 
@@ -85,5 +87,28 @@ export async function fetchMenu(): Promise<MenuResponse> {
     }
 
     throw new Error("메뉴 데이터를 불러올 수 없습니다.");
+  }
+}
+
+export async function fetchStore(): Promise<ResponseItemBase<Store>> {
+  try {
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
+    const url = `${baseUrl}/api/store`;
+
+    const res = await fetchWithRetry(url, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "Cache-Control": "no-cache",
+      },
+    });
+
+    const data = await res.json();
+
+    return data;
+  } catch (error) {
+    console.error("스토어 데이터 로딩 실패:", error);
+
+    throw new Error("스토어 데이터를 불러올 수 없습니다.");
   }
 }

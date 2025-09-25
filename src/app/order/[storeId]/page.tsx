@@ -35,7 +35,7 @@ export default async function Page({
       <main className="h-screen">
         <Suspense fallback={<LoadingComponent />}>
           <MenuPageClient
-            initialData={initialData}
+            initialData={initialData.items}
             storeId={storeId}
             accessMode={(access || "tablet") as AccessMode}
           />

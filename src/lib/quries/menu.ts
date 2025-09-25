@@ -5,6 +5,7 @@ import {
 } from "@tanstack/react-query";
 import { fetchMenu } from "../api";
 import { MenuResponse } from "../types/menu";
+import { ResponseListBase } from "../types/common";
 
 const QUERY_KEY = {
   MENU: "menu",
@@ -17,8 +18,11 @@ const MENU_RETRY_MAX_DELAY_30_SEC = 30000;
 
 export const useMenuQuery = (
   storeId: string,
-  options?: Omit<UseQueryOptions<MenuResponse, Error>, "queryKey" | "queryFn">
-): UseQueryResult<MenuResponse, Error> => {
+  options?: Omit<
+    UseQueryOptions<ResponseListBase<MenuResponse>, Error>,
+    "queryKey" | "queryFn"
+  >
+): UseQueryResult<ResponseListBase<MenuResponse>, Error> => {
   return useQuery({
     ...options,
     queryKey: [QUERY_KEY.MENU, storeId],
