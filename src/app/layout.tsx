@@ -6,6 +6,15 @@ export const metadata: Metadata = {
   title: "Order System",
   description: "매장 주문 시스템",
   manifest: "/manifest.webmanifest",
+  icons: {
+    icon: "/icons/icon_192.png",
+    apple: "/icons/icon_192.png",
+  },
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: "Order System",
+  },
 };
 
 export default function RootLayout({
