@@ -3,11 +3,12 @@ import {
   UseQueryOptions,
   UseQueryResult,
 } from "@tanstack/react-query";
-import { fetchMenu } from "../api";
-import { MenuResponse } from "../types/menu";
+import { fetchMenu, fetchMenuItem } from "../api";
+import { MenuItem, MenuResponse } from "../types/menu";
 
 const QUERY_KEY = {
   MENU: "menu",
+  MENU_ITEM: "menuItem",
 };
 
 const MENU_STALE_TIME_10_MIN = 10 * 60 * 1000;
@@ -34,5 +35,17 @@ export const useMenuQuery = (
       ),
     refetchOnWindowFocus: true,
     refetchOnReconnect: true,
+  });
+};
+
+export const useMenuItemQuery = (
+  storeId: string,
+  menuId: string,
+  options?: Omit<UseQueryOptions<MenuItem, Error>, "queryKey" | "queryFn">
+): UseQueryResult<MenuItem, Error> => {
+  return useQuery({
+    ...options,
+    queryKey: [QUERY_KEY.MENU_ITEM, storeId, menuId],
+    queryFn: () => fetchMenuItem(storeId, menuId),
   });
 };

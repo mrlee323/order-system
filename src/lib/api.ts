@@ -1,4 +1,4 @@
-import { MenuResponse } from "./types/menu";
+import { MenuItem, MenuResponse } from "./types/menu";
 import { ResponseItemBase, ResponseListBase } from "./types/common";
 import { Store } from "./types/store";
 
@@ -104,5 +104,27 @@ export async function fetchStore(storeId: string): Promise<Store> {
     console.error("스토어 데이터 로딩 실패:", error);
 
     throw new Error("스토어 데이터를 불러올 수 없습니다.");
+  }
+}
+
+export async function fetchMenuItem(
+  storeId: string,
+  menuId: string
+): Promise<MenuItem> {
+  try {
+    const res = await fetchWithRetry(`/api/menu/${menuId}?storeId=${storeId}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "Cache-Control": "no-cache",
+      },
+    });
+
+    const data: ResponseItemBase<MenuItem> = await res.json();
+
+    return data.item;
+  } catch (error) {
+    console.error("메뉴 상세 데이터 로딩 실패:", error);
+    throw new Error("메뉴 상세 데이터를 불러올 수 없습니다.");
   }
 }
