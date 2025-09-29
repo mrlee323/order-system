@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import QueryProvider from "@/components/common/QueryProvider";
+import { ToastContainer } from "@/components/ui";
 
 export const metadata: Metadata = {
   title: "Order System",
@@ -26,6 +27,7 @@ export default function RootLayout({
     <html lang="ko">
       <body className="min-h-screen bg-gray-50 text-gray-900">
         <QueryProvider>{children}</QueryProvider>
+        <ToastContainer />
       </body>
     </html>
   );
