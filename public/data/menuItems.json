@@ -1,0 +1,1045 @@
+{
+  "items": [
+    {
+      "id": 100001,
+      "title": "에스프레소",
+      "description": "진한 원두의 깊은 풍미",
+      "thumbnail": "https://plus.unsplash.com/premium_photo-1669687924558-386bff1a0469?q=80&w=776&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "category": "beverages",
+      "subcategory": "espresso",
+      "options": {
+        "required": [
+          {
+            "id": 1000001,
+            "type": "temperature",
+            "title": "음료 종류",
+            "allowMultiple": false,
+            "required": true,
+            "choices": [
+              {
+                "id": 10000001,
+                "title": "Hot",
+                "price": 3000,
+                "stock": 100,
+                "available": true
+              }
+            ]
+          }
+        ],
+        "optional": [],
+        "extras": []
+      }
+    },
+    {
+      "id": 100002,
+      "title": "아메리카노",
+      "description": "깔끔한 맛의 기본 커피",
+      "thumbnail": "https://images.unsplash.com/photo-1580661869408-55ab23f2ca6e?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "category": "beverages",
+      "subcategory": "espresso",
+      "options": {
+        "required": [
+          {
+            "id": 1000001,
+            "type": "temperature",
+            "title": "음료 종류",
+            "allowMultiple": false,
+            "required": true,
+            "choices": [
+              {
+                "id": 10000001,
+                "title": "Hot",
+                "price": 3500,
+                "stock": 80,
+                "available": true
+              },
+              {
+                "id": 10000002,
+                "title": "Ice",
+                "price": 3700,
+                "stock": 70,
+                "available": true
+              }
+            ]
+          }
+        ],
+        "optional": [],
+        "extras": []
+      }
+    },
+    {
+      "id": 100003,
+      "title": "카페 라테",
+      "description": "에스프레소와 우유의 부드러운 조화",
+      "thumbnail": "https://images.unsplash.com/photo-1506372023823-741c83b836fe?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "category": "beverages",
+      "subcategory": "espresso",
+      "options": {
+        "required": [
+          {
+            "id": 1000001,
+            "type": "temperature",
+            "title": "음료 종류",
+            "allowMultiple": false,
+            "required": true,
+            "choices": [
+              {
+                "id": 10000001,
+                "title": "Hot",
+                "price": 4000,
+                "stock": 60,
+                "available": true
+              },
+              {
+                "id": 10000002,
+                "title": "Ice",
+                "price": 4200,
+                "stock": 40,
+                "available": true
+              }
+            ]
+          }
+        ],
+        "optional": [
+          {
+            "id": 1000002,
+            "type": "milk",
+            "title": "Milk Type",
+            "allowMultiple": false,
+            "required": false,
+            "default": 10000003,
+            "choices": [
+              {
+                "id": 10000003,
+                "title": "일반우유",
+                "price": 0
+              },
+              {
+                "id": 10000004,
+                "title": "두유",
+                "price": 500
+              },
+              {
+                "id": 10000005,
+                "title": "오트밀크",
+                "price": 700
+              }
+            ]
+          },
+          {
+            "id": 1000003,
+            "type": "shot",
+            "title": "샷 추가",
+            "allowMultiple": true,
+            "required": false,
+            "choices": [
+              {
+                "id": 10000006,
+                "title": "샷 추가",
+                "price": 1000,
+                "maxQuantity": 5
+              }
+            ]
+          }
+        ],
+        "extras": []
+      }
+    },
+    {
+      "id": 100004,
+      "title": "카페 모카",
+      "description": "초콜릿과 에스프레소의 달콤한 맛",
+      "thumbnail": "https://plus.unsplash.com/premium_photo-1726761688239-631f3699e3ca?q=80&w=858&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "category": "beverages",
+      "subcategory": "espresso",
+      "options": {
+        "required": [
+          {
+            "id": 1000001,
+            "type": "temperature",
+            "title": "음료 종류",
+            "allowMultiple": false,
+            "required": true,
+            "choices": [
+              {
+                "id": 10000001,
+                "title": "Hot",
+                "price": 4500,
+                "stock": 40,
+                "available": true
+              },
+              {
+                "id": 10000002,
+                "title": "Ice",
+                "price": 4700,
+                "stock": 35,
+                "available": true
+              }
+            ]
+          }
+        ],
+        "optional": [
+          {
+            "id": 1000002,
+            "type": "milk",
+            "title": "Milk Type",
+            "allowMultiple": false,
+            "required": false,
+            "default": 10000003,
+            "choices": [
+              {
+                "id": 10000003,
+                "title": "일반우유",
+                "price": 0
+              },
+              {
+                "id": 10000004,
+                "title": "두유",
+                "price": 500
+              },
+              {
+                "id": 10000005,
+                "title": "오트밀크",
+                "price": 700
+              }
+            ]
+          },
+          {
+            "id": 1000003,
+            "type": "shot",
+            "title": "샷 추가",
+            "allowMultiple": true,
+            "required": false,
+            "choices": [
+              {
+                "id": 10000006,
+                "title": "샷 추가",
+                "price": 1000,
+                "maxQuantity": 5
+              }
+            ]
+          }
+        ],
+        "extras": []
+      }
+    },
+    {
+      "id": 100005,
+      "title": "바닐라 라테",
+      "description": "바닐라 향의 부드러운 라테",
+      "thumbnail": "https://plus.unsplash.com/premium_photo-1723759448747-1d174225e61f?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "category": "beverages",
+      "subcategory": "espresso",
+      "options": {
+        "required": [
+          {
+            "id": 1000001,
+            "type": "temperature",
+            "title": "음료 종류",
+            "allowMultiple": false,
+            "required": true,
+            "choices": [
+              {
+                "id": 10000001,
+                "title": "Hot",
+                "price": 4300,
+                "stock": 50,
+                "available": true
+              },
+              {
+                "id": 10000002,
+                "title": "Ice",
+                "price": 4500,
+                "stock": 45,
+                "available": true
+              }
+            ]
+          }
+        ],
+        "optional": [
+          {
+            "id": 1000002,
+            "type": "milk",
+            "title": "Milk Type",
+            "allowMultiple": false,
+            "required": false,
+            "default": 10000003,
+            "choices": [
+              {
+                "id": 10000003,
+                "title": "일반우유",
+                "price": 0
+              },
+              {
+                "id": 10000004,
+                "title": "두유",
+                "price": 500
+              },
+              {
+                "id": 10000005,
+                "title": "오트밀크",
+                "price": 700
+              }
+            ]
+          },
+          {
+            "id": 1000003,
+            "type": "shot",
+            "title": "샷 추가",
+            "allowMultiple": true,
+            "required": false,
+            "choices": [
+              {
+                "id": 10000006,
+                "title": "샷 추가",
+                "price": 1000,
+                "maxQuantity": 5
+              }
+            ]
+          }
+        ],
+        "extras": []
+      }
+    },
+    {
+      "id": 100006,
+      "title": "카라멜 마키아또",
+      "description": "카라멜 시럽과 에스프레소의 달콤한 조화",
+      "thumbnail": "https://images.unsplash.com/photo-1570517130750-10c67ffdde09?q=80&w=776&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "category": "beverages",
+      "subcategory": "espresso",
+      "options": {
+        "required": [
+          {
+            "id": 1000001,
+            "type": "temperature",
+            "title": "음료 종류",
+            "allowMultiple": false,
+            "required": true,
+            "choices": [
+              {
+                "id": 10000001,
+                "title": "Hot",
+                "price": 4800,
+                "stock": 40,
+                "available": true
+              },
+              {
+                "id": 10000002,
+                "title": "Ice",
+                "price": 5000,
+                "stock": 35,
+                "available": true
+              }
+            ]
+          }
+        ],
+        "optional": [
+          {
+            "id": 1000002,
+            "type": "milk",
+            "title": "Milk Type",
+            "allowMultiple": false,
+            "required": false,
+            "default": 10000003,
+            "choices": [
+              {
+                "id": 10000003,
+                "title": "일반우유",
+                "price": 0
+              },
+              {
+                "id": 10000004,
+                "title": "두유",
+                "price": 500
+              },
+              {
+                "id": 10000005,
+                "title": "오트밀크",
+                "price": 700
+              }
+            ]
+          },
+          {
+            "id": 1000003,
+            "type": "shot",
+            "title": "샷 추가",
+            "allowMultiple": true,
+            "required": false,
+            "choices": [
+              {
+                "id": 10000006,
+                "title": "샷 추가",
+                "price": 1000,
+                "maxQuantity": 5
+              }
+            ]
+          }
+        ],
+        "extras": []
+      }
+    },
+    {
+      "id": 100007,
+      "title": "그린티",
+      "description": "깔끔하고 은은한 녹차",
+      "thumbnail": "https://images.unsplash.com/photo-1627894005682-166e8687356a?q=80&w=1160&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "category": "beverages",
+      "subcategory": "tea",
+      "options": {
+        "required": [
+          {
+            "id": 1000001,
+            "type": "temperature",
+            "title": "음료 종류",
+            "allowMultiple": false,
+            "required": true,
+            "choices": [
+              {
+                "id": 10000001,
+                "title": "Hot",
+                "price": 3500,
+                "stock": 40,
+                "available": true
+              },
+              {
+                "id": 10000002,
+                "title": "Ice",
+                "price": 3700,
+                "stock": 30,
+                "available": true
+              }
+            ]
+          }
+        ],
+        "optional": [],
+        "extras": []
+      }
+    },
+    {
+      "id": 100008,
+      "title": "아이스티",
+      "description": "시원하게 즐기는 홍차 베이스 음료",
+      "thumbnail": "https://images.unsplash.com/photo-1499638673689-79a0b5115d87?q=80&w=928&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "category": "beverages",
+      "subcategory": "tea",
+      "options": {
+        "required": [
+          {
+            "id": 1000001,
+            "type": "temperature",
+            "title": "음료 종류",
+            "allowMultiple": false,
+            "required": true,
+            "choices": [
+              {
+                "id": 10000002,
+                "title": "Ice",
+                "price": 3600,
+                "stock": 40,
+                "available": true
+              }
+            ]
+          }
+        ],
+        "optional": [],
+        "extras": []
+      }
+    },
+    {
+      "id": 100009,
+      "title": "얼그레이",
+      "description": "베르가못 향이 은은한 홍차",
+      "thumbnail": "https://images.unsplash.com/photo-1498604636225-6b87a314baa0?q=80&w=1552&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "category": "beverages",
+      "subcategory": "tea",
+      "options": {
+        "required": [
+          {
+            "id": 1000001,
+            "type": "temperature",
+            "title": "음료 종류",
+            "allowMultiple": false,
+            "required": true,
+            "choices": [
+              {
+                "id": 10000001,
+                "title": "Hot",
+                "price": 3600,
+                "stock": 40,
+                "available": true
+              },
+              {
+                "id": 10000002,
+                "title": "Ice",
+                "price": 3800,
+                "stock": 25,
+                "available": true
+              }
+            ]
+          }
+        ],
+        "optional": [],
+        "extras": []
+      }
+    },
+    {
+      "id": 100010,
+      "title": "캐모마일티",
+      "description": "편안한 허브티",
+      "thumbnail": "https://images.unsplash.com/photo-1652620386215-d7aaf6edf856?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "category": "beverages",
+      "subcategory": "tea",
+      "options": {
+        "required": [
+          {
+            "id": 1000001,
+            "type": "temperature",
+            "title": "음료 종류",
+            "allowMultiple": false,
+            "required": true,
+            "choices": [
+              {
+                "id": 10000001,
+                "title": "Hot",
+                "price": 3700,
+                "stock": 35,
+                "available": true
+              },
+              {
+                "id": 10000002,
+                "title": "Ice",
+                "price": 3900,
+                "stock": 20,
+                "available": true
+              }
+            ]
+          }
+        ],
+        "optional": [],
+        "extras": []
+      }
+    },
+    {
+      "id": 100011,
+      "title": "초코 라테",
+      "description": "진한 초콜릿 풍미의 라테",
+      "thumbnail": "https://plus.unsplash.com/premium_photo-1695750678153-e7148811673e?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "category": "beverages",
+      "subcategory": "others",
+      "options": {
+        "required": [
+          {
+            "id": 1000001,
+            "type": "temperature",
+            "title": "음료 종류",
+            "allowMultiple": false,
+            "required": true,
+            "choices": [
+              {
+                "id": 10000001,
+                "title": "Hot",
+                "price": 4300,
+                "stock": 30,
+                "available": true
+              },
+              {
+                "id": 10000002,
+                "title": "Ice",
+                "price": 4500,
+                "stock": 25,
+                "available": true
+              }
+            ]
+          }
+        ],
+        "optional": [
+          {
+            "id": 1000002,
+            "type": "milk",
+            "title": "Milk Type",
+            "allowMultiple": false,
+            "required": false,
+            "default": 10000003,
+            "choices": [
+              {
+                "id": 10000003,
+                "title": "일반우유",
+                "price": 0
+              },
+              {
+                "id": 10000004,
+                "title": "두유",
+                "price": 500
+              },
+              {
+                "id": 10000005,
+                "title": "오트밀크",
+                "price": 700
+              }
+            ]
+          }
+        ],
+        "extras": []
+      }
+    },
+    {
+      "id": 100012,
+      "title": "고구마 라테",
+      "description": "달콤한 고구마 풍미",
+      "thumbnail": "https://plus.unsplash.com/premium_photo-1661562031871-317d77e64290?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "subcategory": "others",
+      "options": {
+        "required": [
+          {
+            "id": 1000001,
+            "type": "temperature",
+            "title": "음료 종류",
+            "allowMultiple": false,
+            "required": true,
+            "choices": [
+              {
+                "id": 10000001,
+                "title": "Hot",
+                "price": 4300,
+                "stock": 30,
+                "available": true
+              },
+              {
+                "id": 10000002,
+                "title": "Ice",
+                "price": 4500,
+                "stock": 25,
+                "available": true
+              }
+            ]
+          }
+        ],
+        "optional": [
+          {
+            "id": 1000002,
+            "type": "milk",
+            "title": "Milk Type",
+            "allowMultiple": false,
+            "required": false,
+            "default": 10000003,
+            "choices": [
+              {
+                "id": 10000003,
+                "title": "일반우유",
+                "price": 0
+              },
+              {
+                "id": 10000004,
+                "title": "두유",
+                "price": 500
+              },
+              {
+                "id": 10000005,
+                "title": "오트밀크",
+                "price": 700
+              }
+            ]
+          }
+        ],
+        "extras": []
+      }
+    },
+    {
+      "id": 100013,
+      "title": "딸기 라테",
+      "description": "상큼한 딸기와 우유의 조화",
+      "thumbnail": "https://plus.unsplash.com/premium_photo-1669686982303-7da68cdd4595?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "category": "beverages",
+      "subcategory": "others",
+      "options": {
+        "required": [
+          {
+            "id": 1000001,
+            "type": "temperature",
+            "title": "음료 종류",
+            "allowMultiple": false,
+            "required": true,
+            "choices": [
+              {
+                "id": 10000002,
+                "title": "Ice",
+                "price": 4800,
+                "stock": 30,
+                "available": true
+              }
+            ]
+          }
+        ],
+        "optional": [],
+        "extras": []
+      }
+    },
+    {
+      "id": 100014,
+      "title": "딸기 요거트",
+      "description": "상큼한 요거트와 딸기",
+      "thumbnail": "https://images.unsplash.com/photo-1553177595-4de2bb0842b9?q=80&w=770&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "category": "beverages",
+      "subcategory": "others",
+      "options": {
+        "required": [
+          {
+            "id": 1000001,
+            "type": "temperature",
+            "title": "음료 종류",
+            "allowMultiple": false,
+            "required": true,
+            "choices": [
+              {
+                "id": 10000002,
+                "title": "Ice",
+                "price": 5000,
+                "stock": 25,
+                "available": true
+              }
+            ]
+          }
+        ],
+        "optional": [],
+        "extras": []
+      }
+    },
+    {
+      "id": 100015,
+      "title": "치킨 샌드위치",
+      "description": "바삭한 치킨과 신선한 야채",
+      "thumbnail": "https://images.unsplash.com/photo-1666819604716-7b60a604bb76?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "category": "food",
+      "subcategory": "sandwich",
+      "price": 5500,
+      "stock": 20,
+      "available": true
+    },
+    {
+      "id": 100016,
+      "title": "불고기 샌드위치",
+      "description": "불고기와 채소의 든든한 조합",
+      "thumbnail": "https://images.unsplash.com/photo-1753798130695-3c060be80e83?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "category": "food",
+      "subcategory": "sandwich",
+      "price": 5800,
+      "stock": 15,
+      "available": true
+    },
+    {
+      "id": 100017,
+      "title": "클럽 샌드위치",
+      "description": "베이컨과 치킨, 계란의 풍성한 맛",
+      "thumbnail": "https://plus.unsplash.com/premium_photo-1738802845911-809a01acfa50?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "category": "food",
+      "subcategory": "sandwich",
+      "price": 6000,
+      "stock": 10,
+      "available": true
+    },
+    {
+      "id": 100018,
+      "title": "티라미수",
+      "description": "마스카포네 치즈와 에스프레소의 조화",
+      "thumbnail": "https://images.unsplash.com/photo-1707269388230-60ceceac3e6b?q=80&w=928&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "category": "food",
+      "subcategory": "cake",
+      "price": 4800,
+      "stock": 20,
+      "available": true
+    },
+    {
+      "id": 100019,
+      "title": "당근 케이크",
+      "description": "당근과 견과류의 달콤한 조화",
+      "thumbnail": "https://images.unsplash.com/photo-1487124504955-e42a39e11aaf?q=80&w=1652&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "category": "food",
+      "subcategory": "cake",
+      "price": 4500,
+      "stock": 15,
+      "available": true
+    },
+    {
+      "id": 100020,
+      "title": "치즈 케이크",
+      "description": "부드럽고 진한 치즈맛",
+      "thumbnail": "https://images.unsplash.com/photo-1635327173758-85badf17f995?q=80&w=1654&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "category": "food",
+      "subcategory": "cake",
+      "price": 4700,
+      "stock": 15,
+      "available": true
+    },
+    {
+      "id": 100021,
+      "title": "라즈베리 크림치즈 케이크",
+      "description": "상큼한 라즈베리와 크림치즈",
+      "thumbnail": "https://plus.unsplash.com/premium_photo-1723651343962-75cd6cc5c308?q=80&w=860&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "category": "food",
+      "subcategory": "cake",
+      "price": 5200,
+      "stock": 10,
+      "available": true
+    },
+    {
+      "id": 100022,
+      "title": "초코 딸기 케이크",
+      "description": "진한 초코와 딸기의 달콤한 조화",
+      "thumbnail": "https://images.unsplash.com/photo-1545396872-a6682fc218ab?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "category": "food",
+      "subcategory": "cake",
+      "price": 5000,
+      "stock": 12,
+      "available": true
+    },
+    {
+      "id": 100023,
+      "title": "베이글",
+      "description": "쫄깃한 기본 베이글",
+      "thumbnail": "https://images.unsplash.com/photo-1685779926031-08735ebe8b1f?q=80&w=652&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "category": "food",
+      "subcategory": "bread",
+      "price": 2500,
+      "stock": 30,
+      "available": true,
+      "options": {
+        "required": [],
+        "optional": [
+          {
+            "id": 1000004,
+            "type": "warmable",
+            "title": "데움 여부",
+            "allowMultiple": false,
+            "required": false,
+            "default": 10000008,
+            "choices": [
+              {
+                "id": 10000007,
+                "title": "데움",
+                "price": 0
+              },
+              {
+                "id": 10000008,
+                "title": "데우지 않음",
+                "price": 0
+              }
+            ]
+          }
+        ],
+        "extras": [
+          {
+            "id": 1000005,
+            "type": "spread",
+            "title": "추가 스프레드",
+            "allowMultiple": true,
+            "required": false,
+            "choices": [
+              {
+                "id": 10000009,
+                "title": "크림치즈",
+                "price": 1000,
+                "maxQuantity": 3
+              },
+              {
+                "id": 10000010,
+                "title": "버터",
+                "price": 700,
+                "maxQuantity": 3
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 100024,
+      "title": "블루베리 베이글",
+      "description": "블루베리가 들어간 달콤한 베이글",
+      "thumbnail": "https://museo.hgodo.com/thumb_img/brand/dboatkorea/480/480_25335_01.jpg",
+      "category": "food",
+      "subcategory": "bread",
+      "price": 2800,
+      "stock": 20,
+      "available": true,
+      "options": {
+        "required": [],
+        "optional": [
+          {
+            "id": 1000004,
+            "type": "warmable",
+            "title": "데움 여부",
+            "allowMultiple": false,
+            "required": false,
+            "default": 10000008,
+            "choices": [
+              {
+                "id": 10000007,
+                "title": "데움",
+                "price": 0
+              },
+              {
+                "id": 10000008,
+                "title": "데우지 않음",
+                "price": 0
+              }
+            ]
+          }
+        ],
+        "extras": [
+          {
+            "id": 1000005,
+            "type": "spread",
+            "title": "추가 스프레드",
+            "allowMultiple": true,
+            "required": false,
+            "choices": [
+              {
+                "id": 10000009,
+                "title": "크림치즈",
+                "price": 1000,
+                "maxQuantity": 3
+              },
+              {
+                "id": 10000010,
+                "title": "버터",
+                "price": 700,
+                "maxQuantity": 3
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 100025,
+      "title": "스콘",
+      "description": "고소한 맛의 기본 스콘",
+      "thumbnail": "https://images.unsplash.com/photo-1620416396438-cf1886c79e2a?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "category": "food",
+      "subcategory": "bread",
+      "price": 3000,
+      "stock": 25,
+      "available": true,
+      "options": {
+        "required": [],
+        "optional": [
+          {
+            "id": 1000004,
+            "type": "warmable",
+            "title": "데움 여부",
+            "allowMultiple": false,
+            "required": false,
+            "default": 10000008,
+            "choices": [
+              {
+                "id": 10000007,
+                "title": "데움",
+                "price": 0
+              },
+              {
+                "id": 10000008,
+                "title": "데우지 않음",
+                "price": 0
+              }
+            ]
+          }
+        ],
+        "extras": [
+          {
+            "id": 1000005,
+            "type": "spread",
+            "title": "추가 스프레드",
+            "allowMultiple": true,
+            "required": false,
+            "choices": [
+              {
+                "id": 10000009,
+                "title": "크림치즈",
+                "price": 1000,
+                "maxQuantity": 3
+              },
+              {
+                "id": 10000010,
+                "title": "버터",
+                "price": 700,
+                "maxQuantity": 3
+              },
+              {
+                "id": 10000011,
+                "title": "딸기잼",
+                "price": 700,
+                "maxQuantity": 3
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 100026,
+      "title": "무화과 스콘",
+      "description": "무화과가 들어간 풍미 깊은 스콘",
+      "thumbnail": "https://ecimg.cafe24img.com/pg673b72506624079/margofoodlab/web/product/big/20250702/213818d394f7970fc0d7c734715b7daf.jpg",
+      "category": "food",
+      "subcategory": "bread",
+      "price": 3500,
+      "stock": 15,
+      "available": true,
+      "options": {
+        "required": [],
+        "optional": [
+          {
+            "id": 1000004,
+            "type": "warmable",
+            "title": "데움 여부",
+            "allowMultiple": false,
+            "required": false,
+            "default": 10000008,
+            "choices": [
+              {
+                "id": 10000007,
+                "title": "데움",
+                "price": 0
+              },
+              {
+                "id": 10000008,
+                "title": "데우지 않음",
+                "price": 0
+              }
+            ]
+          }
+        ],
+        "extras": [
+          {
+            "id": 1000005,
+            "type": "spread",
+            "title": "추가 스프레드",
+            "allowMultiple": true,
+            "required": false,
+            "choices": [
+              {
+                "id": 10000009,
+                "title": "크림치즈",
+                "price": 1000,
+                "maxQuantity": 3
+              },
+              {
+                "id": 10000010,
+                "title": "버터",
+                "price": 700,
+                "maxQuantity": 3
+              },
+              {
+                "id": 10000011,
+                "title": "딸기잼",
+                "price": 700,
+                "maxQuantity": 3
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}
