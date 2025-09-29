@@ -10,4 +10,3 @@ export {
   showWarningToast,
   showInfoToast,
 } from "./Toast";
-export { UIHookExample } from "./UIHookExample";
