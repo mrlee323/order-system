@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { ChevronLeft, Share2, Plus, Minus, ShoppingCart } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 
 import { useMenuItemQuery } from "@/lib/quries/menu";
 import useMenu from "@/hooks/useMenu";
@@ -14,6 +15,8 @@ export default function MenuDetail({
   storeId: string;
   menuId: string;
 }) {
+  const menuInfoRef = useRef<HTMLDivElement>(null);
+  const [isContentsPositionTop, setIsContentsPositionTop] = useState(false);
   const { data: menu, isLoading, error } = useMenuItemQuery(storeId, menuId);
   const {
     totalPrice,
@@ -28,6 +31,19 @@ export default function MenuDetail({
     item: menu || null,
     isOpen: true,
   });
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (menuInfoRef.current) {
+        const rect = menuInfoRef.current.getBoundingClientRect();
+        setIsContentsPositionTop(rect.top <= 0);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [menu]);
 
   if (isLoading) {
     return (
@@ -58,6 +74,26 @@ export default function MenuDetail({
 
   return (
     <div className="relative min-h-screen">
+      {/* Sticky 헤더 - 스크롤 시 나타남 */}
+      {isContentsPositionTop && (
+        <div className="fixed top-0 left-0 right-0 z-100 bg-white px-4 py-2 shadow-md">
+          <div className="flex items-center justify-between">
+            <button
+              onClick={() => window.history.back()}
+              className="w-8 h-8  flex items-center justify-center hover:bg-gray-200 transition-all duration-300"
+            >
+              <ChevronLeft className="w-6 h-6 text-gray-600" />
+            </button>
+            <h1 className="text-md sm:text-lg font-semibold text-gray-800 truncate max-w-[200px]">
+              {menu.title}
+            </h1>
+            <button className="w-8 h-8 flex items-center justify-center hover:bg-gray-200 transition-all duration-300">
+              <Share2 className="w-5 h-5 text-gray-600" />
+            </button>
+          </div>
+        </div>
+      )}
+
       {/* 상단 이미지 섹션 */}
       <div className="sticky top-0 left-0 right-0 h-64 z-1">
         {/* 네비게이션 바 */}
@@ -88,9 +124,14 @@ export default function MenuDetail({
       </div>
 
       {/* 메뉴 정보 섹션 */}
-      <div className="absolute top-64 h-screen left-0 right-0 z-3 px-4 py-4 bg-white rounded-2xl ">
+      <div
+        ref={menuInfoRef}
+        className={`absolute top-64 h-screen left-0 right-0 z-3 px-4 ${
+          isContentsPositionTop ? "pt-20 pb-32 overflow-y-auto" : " py-4"
+        } bg-white rounded-2xl `}
+      >
         {/* 제목 */}
-        <div className="mb-5">
+        <div className={`mb-5 ${isContentsPositionTop ? "hidden" : ""}`}>
           <h1 className="text-xl font-bold text-gray-800 mb-2">{menu.title}</h1>
           <p className="text-sm text-gray-600 leading-relaxed">
             {menu.description}
