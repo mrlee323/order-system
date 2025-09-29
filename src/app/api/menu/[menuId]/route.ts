@@ -6,6 +6,9 @@ export async function GET(
   request: Request,
   { params }: { params: Promise<{ menuId: string }> }
 ) {
+  const { searchParams } = new URL(request.url);
+  const storeId = searchParams.get("storeId");
+
   const { menuId } = await params;
 
   const menuList = menuItemsData.items as MenuItem[];

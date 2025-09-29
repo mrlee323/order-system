@@ -57,7 +57,7 @@ export default function HomePage() {
                 직원이 주문을 받을 수 있습니다.
               </p>
               <Link
-                href="/order/1?access=tablet"
+                href="/store/1/menu"
                 prefetch={false}
                 className="inline-flex items-center justify-center w-full px-6 py-3 bg-blue-600 text-white font-medium rounded-xl hover:bg-blue-700 transition-colors duration-200 shadow-md hover:shadow-lg"
               >

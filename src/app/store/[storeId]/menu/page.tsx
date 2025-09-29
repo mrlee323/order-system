@@ -1,5 +1,5 @@
 import { AccessMode } from "@/lib/types/menu";
-import MenuPageClient from "@/components/menu/MenuPageClient";
+import MenuPage from "@/components/menu/MenuPage";
 
 export async function generateMetadata({
   params,
@@ -9,8 +9,8 @@ export async function generateMetadata({
   const { storeId } = await params;
 
   return {
-    title: `주문 시스템 - 매장 ${storeId}`,
-    description: "매장 주문 관리 시스템",
+    title: `메뉴 - 매장 ${storeId}`,
+    description: "매장 메뉴 보기",
   };
 }
 
@@ -25,7 +25,7 @@ export default async function Page({
   const { access } = await searchParams;
 
   return (
-    <MenuPageClient
+    <MenuPage
       storeId={storeId}
       accessMode={(access || "tablet") as AccessMode}
     />

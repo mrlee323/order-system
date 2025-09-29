@@ -8,15 +8,12 @@ import Cart from "@/components/cart/Cart";
 import { useStoreQuery } from "@/lib/quries/store";
 import ErrorComponent from "@/components/common/ErrorComponent";
 
-interface MenuPageClientProps {
+interface MenuPageProps {
   storeId: string;
   accessMode: AccessMode;
 }
 
-export default function MenuPageClient({
-  storeId,
-  accessMode,
-}: MenuPageClientProps) {
+export default function MenuPage({ storeId, accessMode }: MenuPageProps) {
   const { data, isLoading, error, refetch } = useMenuQuery(storeId);
   const { data: storeData } = useStoreQuery(storeId);
 
