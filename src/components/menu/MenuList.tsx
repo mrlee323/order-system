@@ -4,7 +4,7 @@ import { useState, useMemo } from "react";
 import Image from "next/image";
 
 import {
-  MenuItem,
+  MenuItem as MenuItemType,
   CategoryType,
   MenuResponse,
   AccessMode,
@@ -14,6 +14,7 @@ import useImagePreloader from "@/hooks/useImagePreloader";
 
 import MenuCard from "./MenuCard";
 import MenuDetailModal from "./MenuDetailModal";
+import MenuItem from "./MenuItem";
 
 interface MenuListProps {
   data: MenuResponse | undefined;
@@ -32,7 +33,7 @@ export default function MenuList({
   const [selectedSubCategory, setSelectedSubCategory] = useState<string | null>(
     null
   );
-  const [selectedMenuItem, setSelectedMenuItem] = useState<MenuItem | null>(
+  const [selectedMenuItem, setSelectedMenuItem] = useState<MenuItemType | null>(
     null
   );
   const categories = useMemo(() => {
@@ -74,7 +75,7 @@ export default function MenuList({
     setSelectedSubCategory(subCategoryType);
   };
 
-  const handleMenuItemSelect = (item: MenuItem) => {
+  const handleMenuItemSelect = (item: MenuItemType) => {
     setSelectedMenuItem(item);
   };
 
@@ -129,7 +130,7 @@ export default function MenuList({
         )}
 
         {/* 카테고리 */}
-        <div className="h-full flex gap-2 p-2 sm:p-4 bg-white shadow-lg portrait:flex-row landscape:flex-col landscape:w-48 portrait:w-full portrait:border-y border-gray-100">
+        <div className="landscape:h-full flex gap-2 p-2 sm:p-4 bg-white shadow-lg portrait:flex-row landscape:flex-col landscape:w-48 portrait:w-full portrait:border-y border-gray-100">
           {categories.map((category) => (
             <button
               key={category.type}
@@ -162,8 +163,21 @@ export default function MenuList({
         </div>
 
         {/* 메뉴 리스트 */}
-        <div className="flex-1 overflow-y-auto p-6 portrait:pt-20 portrait:pb-20">
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <div className="flex-1 overflow-y-auto p-4 sm:p-6 portrait:pt-20 portrait:pb-20">
+          {/* 모바일용 세로 리스트 */}
+          <div className="sm:hidden space-y-3">
+            {menuList?.items.map((item) => (
+              <MenuItem
+                key={item.id}
+                item={item}
+                onClick={handleMenuItemSelect}
+                allImagesLoaded={allLoaded}
+              />
+            ))}
+          </div>
+
+          {/* 데스크톱용 그리드 레이아웃 */}
+          <div className="hidden sm:grid sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4 gap-6">
             {menuList?.items.map((item) => (
               <MenuCard
                 key={item.id}

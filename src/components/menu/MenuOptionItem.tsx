@@ -79,20 +79,24 @@ function QuantityChoice({
 
   return (
     <div
-      className={`p-4 rounded-xl border-2 transition-all ${
+      className={`p-3 sm:p-4 rounded-xl border-2 transition-all ${
         isSelected
           ? "border-blue-500 bg-blue-50"
           : "border-gray-200 hover:border-gray-300"
       }`}
     >
       <div className="flex items-center justify-between">
-        <div className="flex items-center">
-          <span className="font-medium text-gray-800 mr-4">{choice.title}</span>
-          <span className="text-sm text-gray-500">(최대 {maxQuantity}개)</span>
+        <div className="flex flex-col sm:flex-row items-center">
+          <span className="font-medium text-sm sm:text-base xl:text-lg text-gray-800 mr-4">
+            {choice.title}
+          </span>
+          <span className="text-xs sm:text-sm xl:text-base text-gray-500">
+            (최대 {maxQuantity}개)
+          </span>
         </div>
         <div className="flex items-center space-x-3">
           <span
-            className={`font-semibold ${
+            className={`font-semibold text-sm sm:text-base xl:text-lg ${
               isSelected ? "text-blue-600" : "text-gray-400"
             }`}
           >
@@ -107,12 +111,14 @@ function QuantityChoice({
                   Math.max(0, quantityValue - 1)
                 )
               }
-              className="w-8 h-8 rounded-full bg-gray-200 hover:bg-gray-300 flex items-center justify-center text-gray-600 disabled:opacity-50"
+              className="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-gray-200 hover:bg-gray-300 flex items-center justify-center text-gray-600 disabled:opacity-50"
               disabled={quantityValue <= 0}
             >
               -
             </button>
-            <span className="w-8 text-center font-medium">{quantityValue}</span>
+            <span className="w-4 sm:w-8 text-sm sm:text-base xl:text-lg text-center font-medium">
+              {quantityValue}
+            </span>
             <button
               onClick={() =>
                 onQuantityChange(
@@ -121,7 +127,7 @@ function QuantityChoice({
                   Math.min(maxQuantity, quantityValue + 1)
                 )
               }
-              className="w-8 h-8 rounded-full bg-gray-200 hover:bg-gray-300 flex items-center justify-center text-gray-600 disabled:opacity-50"
+              className="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-gray-200 hover:bg-gray-300 flex items-center justify-center text-gray-600 disabled:opacity-50"
               disabled={quantityValue >= maxQuantity}
             >
               +
@@ -154,7 +160,7 @@ function RegularChoice({
 }: RegularChoiceProps) {
   return (
     <label
-      className={`flex items-center justify-between p-4 rounded-xl border-2 cursor-pointer transition-all ${
+      className={`flex items-center justify-between p-3 sm:p-4 rounded-xl border-2 cursor-pointer transition-all ${
         isSelected
           ? "border-blue-500 bg-blue-50"
           : isDisabled
@@ -172,10 +178,12 @@ function RegularChoice({
           onChange={() => onOptionChange(group.id, choice, group.allowMultiple)}
           className="mr-3"
         />
-        <span className="font-medium text-gray-800">{choice.title}</span>
+        <span className="font-medium text-sm sm:text-base xl:text-lg text-gray-800">
+          {choice.title}
+        </span>
       </div>
       {choice.price > 0 && (
-        <span className="text-blue-600 font-semibold">
+        <span className="text-blue-600 font-semibold text-sm sm:text-base xl:text-lg">
           +{choice.price.toLocaleString()}원
         </span>
       )}

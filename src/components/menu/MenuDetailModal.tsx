@@ -168,7 +168,7 @@ export default function MenuDetailModal({
         onClick={onClose}
       />
 
-      <div className="relative bg-white rounded-3xl shadow-2xl max-w-2xl w-full mx-4 max-h-[95vh] overflow-hidden flex flex-col">
+      <div className="relative bg-white rounded-xl sm:rounded-3xl shadow-2xl max-w-2xl w-full mx-4 max-h-[95vh] overflow-hidden flex flex-col">
         {/* 헤더 */}
         <div className="relative h-64 overflow-hidden">
           <Image
@@ -190,11 +190,13 @@ export default function MenuDetailModal({
         {/* 내용 */}
         <div className="p-6 flex-1 overflow-y-auto">
           <div className="mb-6">
-            <h2 className="text-2xl font-bold text-gray-800 mb-2">
+            <h2 className="text-md sm:text-lg xl:text-xl font-bold text-gray-800 mb-2">
               {item.title}
             </h2>
-            <p className="text-gray-600 leading-relaxed">{item.description}</p>
-            <p className="text-xl font-bold text-blue-600 mt-2">
+            <p className="text-sm sm:text-base xl:text-lg text-gray-600 leading-relaxed">
+              {item.description}
+            </p>
+            <p className="text-md sm:text-lg xl:text-xl font-bold text-blue-600 mt-2">
               {basePrice.toLocaleString()}원
             </p>
           </div>
@@ -202,7 +204,7 @@ export default function MenuDetailModal({
           {allOptionGroups.map((group) => (
             <div key={group.id} className="mb-6">
               <div className="flex items-center justify-between mb-3">
-                <h3 className="text-lg font-semibold text-gray-800">
+                <h3 className="text-sm sm:text-base xl:text-lg font-semibold text-gray-800">
                   {group.title}
                   {group.required && (
                     <span className="text-red-500 ml-1">*</span>
@@ -226,27 +228,27 @@ export default function MenuDetailModal({
           ))}
 
           {/* 수량 선택 */}
-          <div className="mb-6">
-            <h3 className="text-lg font-semibold text-gray-800 mb-3">수량</h3>
+          <div className="mb-6 text-sm sm:text-base xl:text-lg">
+            <h3 className="font-semibold text-gray-800 mb-3">수량</h3>
             <div className="flex items-center justify-between">
               <div className="flex items-center border border-gray-300 rounded-xl overflow-hidden">
                 <button
                   onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                  className="px-4 py-3 bg-gray-100 hover:bg-gray-200 transition-colors"
+                  className="px-3 sm:px-4 py-2 sm:py-3 bg-gray-100 hover:bg-gray-200 transition-colors"
                 >
                   -
                 </button>
-                <span className="w-20 text-center font-semibold text-lg">
+                <span className="w-10 sm:w-20 text-center font-semibold">
                   {quantity}
                 </span>
                 <button
                   onClick={() => setQuantity(quantity + 1)}
-                  className="px-4 py-3 bg-gray-100 hover:bg-gray-200 transition-colors"
+                  className="px-3 sm:px-4 py-2 sm:py-3 bg-gray-100 hover:bg-gray-200 transition-colors"
                 >
                   +
                 </button>
               </div>
-              <div className="text-xl font-bold text-blue-600">
+              <div className="font-bold text-blue-600">
                 총 {totalPrice.toLocaleString()}원
               </div>
             </div>
@@ -254,10 +256,10 @@ export default function MenuDetailModal({
         </div>
 
         {/* 하단 버튼 */}
-        <div className="p-6 bg-gray-50 border-t border-gray-200 flex-shrink-0">
+        <div className="p-3 sm:p-6 bg-gray-50 border-t border-gray-200 flex-shrink-0">
           <button
             onClick={handleAddToCart}
-            className="w-full bg-gradient-to-r from-blue-500 via-blue-600 to-indigo-600 text-white py-4 rounded-2xl font-bold text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg active:scale-95"
+            className="w-full bg-gradient-to-r from-blue-500 via-blue-600 to-indigo-600 text-white py-2 sm:py-3 rounded-lg sm:rounded-2xl font-bold text-sm sm:text-base xl:text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg active:scale-95"
           >
             장바구니에 추가
           </button>
