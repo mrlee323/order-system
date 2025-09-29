@@ -142,8 +142,8 @@ function QuantityChoice({
 interface RegularChoiceProps {
   choice: OptionChoice;
   group: OptionGroup;
-  isSelected: boolean;
   isDisabled: boolean;
+  isSelected: boolean;
   onOptionChange: (
     groupId: number,
     choice: OptionChoice,
@@ -154,8 +154,8 @@ interface RegularChoiceProps {
 function RegularChoice({
   choice,
   group,
-  isSelected,
   isDisabled,
+  isSelected,
   onOptionChange,
 }: RegularChoiceProps) {
   return (
@@ -183,7 +183,11 @@ function RegularChoice({
         </span>
       </div>
       {choice.price > 0 && (
-        <span className="text-blue-600 font-semibold text-sm sm:text-base xl:text-lg">
+        <span
+          className={`font-semibold ${
+            isSelected ? "text-blue-600" : "text-gray-600"
+          }`}
+        >
           +{choice.price.toLocaleString()}원
         </span>
       )}

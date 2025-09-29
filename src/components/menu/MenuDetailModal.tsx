@@ -1,12 +1,9 @@
 "use client";
 
-import { useState, useEffect, useMemo, useCallback } from "react";
 import Image from "next/image";
 
-import { MenuItem, OptionChoice } from "@/lib/types/menu";
-import { SelectedOption } from "@/lib/types/cart";
-import { useCartStore } from "@/lib/stores/cartStore";
-import { calculateTotalPrice } from "@/lib/utils/priceCalculator";
+import useMenu from "@/hooks/useMenu";
+import { MenuItem } from "@/lib/types/menu";
 import MenuOptionItem from "./MenuOptionItem";
 
 interface MenuDetailModalProps {
@@ -20,143 +17,20 @@ export default function MenuDetailModal({
   isOpen,
   onClose,
 }: MenuDetailModalProps) {
-  const [quantity, setQuantity] = useState(1);
-  const [selectedOptions, setSelectedOptions] = useState<SelectedOption[]>([]);
-  const { addItem } = useCartStore();
-  const basePrice =
-    item?.price ||
-    item?.options?.required?.[0]?.default ||
-    item?.options?.required?.[0]?.choices[0].price ||
-    0;
-
-  const allOptionGroups = useMemo(() => {
-    if (!item) return [];
-    return [
-      ...(item.options?.required || []),
-      ...(item.options?.optional || []),
-      ...(item.options?.extras || []),
-    ];
-  }, [item]);
-
-  useEffect(() => {
-    if (isOpen && item) {
-      setQuantity(1);
-      setSelectedOptions([]);
-
-      const initialOptions: SelectedOption[] = [];
-
-      const optionGroups = [
-        ...(item.options?.required || []),
-        ...(item.options?.optional || []),
-      ];
-
-      optionGroups.forEach((group) => {
-        if (group.required || group.default) {
-          const choiceId = group.required
-            ? group.choices[0].id
-            : (group.default as number);
-
-          const choice = group.choices.find((c) => c.id === choiceId);
-
-          if (choice) {
-            initialOptions.push({
-              groupId: group.id,
-              choiceId: choiceId,
-              quantity: 1,
-              choice,
-            });
-          }
-        }
-      });
-
-      setSelectedOptions(initialOptions);
-    }
-  }, [isOpen, item]);
-
-  const getQuantityValue = useCallback(
-    (groupId: number, choiceId: number): number => {
-      const option = selectedOptions.find(
-        (opt) => opt.groupId === groupId && opt.choiceId === choiceId
-      );
-      return option?.quantity || 0;
-    },
-    [selectedOptions]
-  );
-
-  const totalPrice = useMemo(() => {
-    if (!item) return 0;
-    return calculateTotalPrice(item, selectedOptions, quantity);
-  }, [item, selectedOptions, quantity]);
-
-  const handleOptionChange = useCallback(
-    (groupId: number, choice: OptionChoice, isMulti: boolean) => {
-      setSelectedOptions((prev) => {
-        const existingIndex = prev.findIndex(
-          (opt) => opt.groupId === groupId && opt.choiceId === choice.id
-        );
-
-        if (isMulti) {
-          if (existingIndex >= 0) {
-            return prev.filter((_, index) => index !== existingIndex);
-          } else {
-            return [
-              ...prev,
-              { groupId, choiceId: choice.id, quantity: 1, choice },
-            ];
-          }
-        } else {
-          return [
-            ...prev.filter((opt) => opt.groupId !== groupId),
-            { groupId, choiceId: choice.id, quantity: 1, choice },
-          ];
-        }
-      });
-    },
-    []
-  );
-
-  const handleQuantityChange = useCallback(
-    (groupId: number, choice: OptionChoice, newQuantity: number) => {
-      setSelectedOptions((prev) => {
-        if (newQuantity === 0) {
-          return prev.filter(
-            (opt) => !(opt.groupId === groupId && opt.choiceId === choice.id)
-          );
-        }
-
-        const existingOption = prev.find(
-          (opt) => opt.groupId === groupId && opt.choiceId === choice.id
-        );
-
-        if (existingOption) {
-          return prev.map((opt) =>
-            opt.groupId === groupId && opt.choiceId === choice.id
-              ? { ...opt, quantity: newQuantity }
-              : opt
-          );
-        } else {
-          return [
-            ...prev,
-            { groupId, choiceId: choice.id, quantity: newQuantity, choice },
-          ];
-        }
-      });
-    },
-    []
-  );
-
-  const handleAddToCart = () => {
-    if (!item) return;
-
-    addItem({
-      menuItem: item,
-      selectedOptions,
-      quantity,
-      totalPrice,
-    });
-
-    onClose();
-  };
+  const {
+    basePrice,
+    totalPrice,
+    groupOptions,
+    quantity,
+    getQuantityValue,
+    handleOptionChange,
+    handleOptionQuntityChange,
+    handleQuantityChange,
+    handleAddToCart,
+  } = useMenu({
+    item,
+    isOpen,
+  });
 
   if (!isOpen || !item) return null;
 
@@ -201,7 +75,7 @@ export default function MenuDetailModal({
             </p>
           </div>
 
-          {allOptionGroups.map((group) => (
+          {groupOptions.map((group) => (
             <div key={group.id} className="mb-6">
               <div className="flex items-center justify-between mb-3">
                 <h3 className="text-sm sm:text-base xl:text-lg font-semibold text-gray-800">
@@ -219,7 +93,7 @@ export default function MenuDetailModal({
                     choice={choice}
                     group={group}
                     onOptionChange={handleOptionChange}
-                    onQuantityChange={handleQuantityChange}
+                    onQuantityChange={handleOptionQuntityChange}
                     getQuantityValue={getQuantityValue}
                   />
                 ))}
@@ -233,7 +107,9 @@ export default function MenuDetailModal({
             <div className="flex items-center justify-between">
               <div className="flex items-center border border-gray-300 rounded-xl overflow-hidden">
                 <button
-                  onClick={() => setQuantity(Math.max(1, quantity - 1))}
+                  onClick={() =>
+                    handleQuantityChange(Math.max(1, quantity - 1))
+                  }
                   className="px-3 sm:px-4 py-2 sm:py-3 bg-gray-100 hover:bg-gray-200 transition-colors"
                 >
                   -
@@ -242,7 +118,7 @@ export default function MenuDetailModal({
                   {quantity}
                 </span>
                 <button
-                  onClick={() => setQuantity(quantity + 1)}
+                  onClick={() => handleQuantityChange(quantity + 1)}
                   className="px-3 sm:px-4 py-2 sm:py-3 bg-gray-100 hover:bg-gray-200 transition-colors"
                 >
                   +
@@ -258,7 +134,7 @@ export default function MenuDetailModal({
         {/* 하단 버튼 */}
         <div className="p-3 sm:p-6 bg-gray-50 border-t border-gray-200 flex-shrink-0">
           <button
-            onClick={handleAddToCart}
+            onClick={() => handleAddToCart(onClose)}
             className="w-full bg-gradient-to-r from-blue-500 via-blue-600 to-indigo-600 text-white py-2 sm:py-3 rounded-lg sm:rounded-2xl font-bold text-sm sm:text-base xl:text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg active:scale-95"
           >
             장바구니에 추가

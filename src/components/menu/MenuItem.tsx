@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import { useParams, useRouter } from "next/navigation";
 import { MenuItem as MenuItemType } from "@/lib/types/menu";
 
 interface MenuItemProps {
@@ -15,6 +16,8 @@ export default function MenuItem({
   onClick,
   allImagesLoaded,
 }: MenuItemProps) {
+  const router = useRouter();
+  const { storeId } = useParams();
   const [imageError, setImageError] = useState(false);
 
   const getBasePrice = () => {
@@ -32,9 +35,13 @@ export default function MenuItem({
 
   const price = getBasePrice();
 
+  const handleClick = () => {
+    router.push(`/store/${storeId}/menu/${item.id}`);
+  };
+
   return (
     <div
-      onClick={() => onClick(item)}
+      onClick={handleClick}
       className="group relative bg-white rounded-2xl shadow-lg overflow-hidden cursor-pointer transition-all duration-300 active:scale-95 hover:shadow-xl flex flex-row h-24"
     >
       {/* 이미지 영역 */}
