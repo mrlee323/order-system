@@ -108,7 +108,7 @@ export default function useMenu({
     });
   };
 
-  const handleAddToCart = (callback?: () => void) => {
+  const handleAddToCart = () => {
     if (!item) return;
     addItem({
       menuItem: item,
@@ -116,7 +116,6 @@ export default function useMenu({
       quantity,
       totalPrice,
     });
-    callback?.();
   };
 
   useEffect(() => {

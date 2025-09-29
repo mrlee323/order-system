@@ -134,7 +134,10 @@ export default function MenuDetailModal({
         {/* 하단 버튼 */}
         <div className="p-3 sm:p-6 bg-gray-50 border-t border-gray-200 flex-shrink-0">
           <button
-            onClick={() => handleAddToCart(onClose)}
+            onClick={() => {
+              handleAddToCart();
+              onClose();
+            }}
             className="w-full bg-gradient-to-r from-blue-500 via-blue-600 to-indigo-600 text-white py-2 sm:py-3 rounded-lg sm:rounded-2xl font-bold text-sm sm:text-base xl:text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg active:scale-95"
           >
             장바구니에 추가

@@ -3,10 +3,13 @@
 import Image from "next/image";
 import { ChevronLeft, Share2, Plus, Minus, ShoppingCart } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import { useRouter } from "next/navigation";
 
 import { useMenuItemQuery } from "@/lib/quries/menu";
 import useMenu from "@/hooks/useMenu";
 import MenuOptionItem from "./MenuOptionItem";
+import { useUI } from "@/hooks/useUI";
+import { Prompt } from "../ui";
 
 export default function MenuDetail({
   storeId,
@@ -15,6 +18,7 @@ export default function MenuDetail({
   storeId: string;
   menuId: string;
 }) {
+  const router = useRouter();
   const menuInfoRef = useRef<HTMLDivElement>(null);
   const [isContentsPositionTop, setIsContentsPositionTop] = useState(false);
   const { data: menu, isLoading, error } = useMenuItemQuery(storeId, menuId);
@@ -31,6 +35,18 @@ export default function MenuDetail({
     item: menu || null,
     isOpen: true,
   });
+
+  const {
+    alert,
+    prompt,
+    modal,
+    showAlert,
+    closeAlert,
+    showPrompt,
+    closePrompt,
+    showModal,
+    closeModal,
+  } = useUI();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -190,7 +206,15 @@ export default function MenuDetail({
         <div className="flex items-center gap-3">
           <button
             className="w-12 h-12 flex items-center justify-center rounded-xl border-2 border-gray-200 hover:border-red-300 transition-all duration-300"
-            onClick={() => handleAddToCart()}
+            onClick={() => {
+              handleAddToCart();
+              showPrompt(
+                "장바구니에 추가되었습니다.",
+                "",
+                "장바구니로이동",
+                "다른메뉴더보기"
+              );
+            }}
           >
             <ShoppingCart className="w-6 h-6 text-gray-400" />
           </button>
@@ -199,6 +223,23 @@ export default function MenuDetail({
           </button>
         </div>
       </div>
+
+      <Prompt
+        isOpen={prompt.isOpen}
+        title={prompt.title}
+        description={prompt.description}
+        cancelText={prompt.cancelText}
+        confirmText={prompt.confirmText}
+        onClose={closePrompt}
+        onCancel={() => {
+          closePrompt();
+          router.push(`/store/${storeId}/cart`);
+        }}
+        onConfirm={() => {
+          closePrompt();
+          router.back();
+        }}
+      />
     </div>
   );
 }
