@@ -4,6 +4,12 @@ import React, { useState, useEffect, useCallback } from "react";
 
 import { ToastItem, ToastProps } from "@/lib/types/ui";
 
+declare global {
+  interface Window {
+    showToast?: (toast: Omit<ToastItem, "id">) => void;
+  }
+}
+
 const Toast: React.FC<ToastProps> = ({ toast, onRemove }) => {
   const [isVisible, setIsVisible] = useState(false);
 
@@ -72,7 +78,7 @@ export const ToastContainer: React.FC = () => {
     };
 
     // 전역 함수로 등록
-    (window as any).showToast = addToast;
+    window.showToast = addToast;
   }, []);
 
   if (toasts.length === 0) return null;
@@ -95,8 +101,8 @@ export const showToast = (
   type: ToastItem["type"] = "info",
   duration?: number
 ) => {
-  if (typeof window !== "undefined" && (window as any).showToast) {
-    (window as any).showToast({ message, type, duration });
+  if (typeof window !== "undefined" && window.showToast) {
+    window.showToast({ message, type, duration });
   }
 };
 
