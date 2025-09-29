@@ -27,18 +27,18 @@ export default function Cart({ accessMode }: CartProps) {
 
   if (items.length === 0) {
     return (
-      <div className="fixed bottom-6 right-6 z-40">
+      <div className="fixed bottom-4 right-4 z-40">
         <button
           onClick={() => openModal()}
-          className="bg-gradient-to-r from-gray-100 to-gray-200 text-gray-600 px-6 py-4 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 active:scale-95"
+          className="bg-gray-100 text-gray-600 p-3 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 active:scale-95"
         >
-          <div className="flex items-center space-x-3">
-            <div className="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center">
-              <span className="text-lg">🛒</span>
+          <div className="flex items-center space-x-2">
+            <div className="w-6 h-6 bg-gray-300 rounded-full flex items-center justify-center">
+              <span className="text-sm">🛒</span>
             </div>
             <div className="text-left">
-              <div className="font-bold text-sm">장바구니</div>
-              <div className="text-xs text-gray-500">0개 아이템</div>
+              <div className="font-bold text-xs">장바구니</div>
+              <div className="text-xs text-gray-500">0개</div>
             </div>
           </div>
         </button>
@@ -50,18 +50,18 @@ export default function Cart({ accessMode }: CartProps) {
     <>
       {/* 장바구니 버튼 */}
       <div
-        className={`fixed bottom-6 z-40 transition-all duration-500 ease-in-out right-6`}
+        className={`fixed bottom-4 z-40 transition-all duration-500 ease-in-out right-4`}
       >
         <button
           onClick={() => (isModalOpen ? closeModal() : openModal())}
-          className="bg-gradient-to-r from-blue-500 via-blue-600 to-indigo-600 text-white p-4 rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-300 transform hover:scale-105 active:scale-95"
+          className="bg-gradient-to-r from-blue-500 via-blue-600 to-indigo-600 text-white p-3 rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 active:scale-95"
         >
           <div className="relative">
-            <div className="w-12 h-12 bg-white/75 rounded-full flex items-center justify-center">
-              <span className="text-2xl">🛒</span>
+            <div className="w-8 h-8 bg-white/75 rounded-full flex items-center justify-center">
+              <span className="text-lg">🛒</span>
             </div>
             {getTotalItems() > 0 && (
-              <div className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold rounded-full w-6 h-6 flex items-center justify-center">
+              <div className="absolute -top-1 -right-1 bg-red-500 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
                 {getTotalItems()}
               </div>
             )}
