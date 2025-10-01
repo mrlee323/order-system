@@ -8,6 +8,7 @@ import { useUI } from "@/hooks/useUI";
 import { Alert, Prompt } from "@/components/ui";
 import { showSuccessToast, showErrorToast } from "@/components/ui";
 import { ChevronLeft, Share2 } from "lucide-react";
+import { useParams, useRouter } from "next/navigation";
 
 export default function CartPage() {
   const {
@@ -18,7 +19,8 @@ export default function CartPage() {
     getTotalItems,
     clearCart,
   } = useCartStore();
-
+  const router = useRouter();
+  const { storeId } = useParams();
   const { isOnline } = useOnlineStatus();
   const { alert, prompt, showAlert, closeAlert, showPrompt, closePrompt } =
     useUI();
@@ -81,72 +83,39 @@ export default function CartPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
+    <div className="min-h-screen bg-gray-50 to-indigo-100">
       {/* 헤더 */}
-      <div className="sticky top-0 left-0 right-0 z-100 bg-white px-4 py-2">
+      <div className="sticky top-0 left-0 right-0 z-100 bg-white px-4 py-2 flex items-center justify-between shadow-md">
         <button
-          onClick={() => window.history.back()}
+          onClick={() => router.push(`/store/${storeId}/menu`)}
           className="w-8 h-8  flex items-center justify-center hover:bg-gray-200 transition-all duration-300"
         >
           <ChevronLeft className="w-6 h-6 text-gray-600" />
         </button>
+        <h1 className="text-lg font-bold text-gray-900">장바구니</h1>
+        <div className="w-8 h-8"></div>
       </div>
 
-      <div className="bg-white px-4 py-2">
-        <h2 className="text-2xl font-bold">장바구니</h2>
-      </div>
-
-      {/* <div className="bg-gradient-to-r from-blue-500 to-indigo-600 text-white p-4 md:p-6">
-        <div className="max-w-4xl mx-auto">
-          <div className="flex items-center gap-4">
-            <button
-              onClick={() => window.history.back()}
-              className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition-colors duration-200 flex-shrink-0"
-            >
-              <svg
-                className="w-5 h-5"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M15 19l-7-7 7-7"
-                />
-              </svg>
-            </button>
-            <div className="flex-1">
-              <h1 className="text-2xl md:text-3xl font-bold">장바구니</h1>
-            </div>
-          </div>
-        </div>
-      </div> */}
-
-      <div className="max-w-4xl mx-auto p-4 md:p-6">
+      <div className="h-[calc(100vh-216px)] overflow-y-auto max-w-4xl mx-auto flex flex-col gap-2">
         {/* 주문 목록 */}
-        <div className="bg-white rounded-2xl shadow-lg overflow-hidden mb-6">
-          <div className="p-4 md:p-6">
-            <h2 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
-              주문 상품
-              <span className="w-7 h-7 bg-gray-100 rounded-full flex items-center justify-center">
-                {getTotalItems()}
-              </span>
-            </h2>
-            <div className="space-y-4">
-              {items.map((item: CartItemType) => (
-                <CartItem
-                  key={item.id}
-                  item={item}
-                  onRemove={() => removeItem(item.id)}
-                  onUpdateQuantity={(quantity: number) =>
-                    updateQuantity(item.id, quantity)
-                  }
-                />
-              ))}
-            </div>
-          </div>
+        <h2 className="bg-white p-4  text-base sm:text-lg font-semibold text-gray-900 flex items-center gap-2">
+          주문 메뉴
+          <span className="w-5 sm:w-7 h-5 sm:h-7 text-xs sm:text-sm bg-gray-100 rounded-full flex items-center justify-center">
+            {getTotalItems()}
+          </span>
+        </h2>
+
+        <div className="space-y-2 ">
+          {items.map((item: CartItemType) => (
+            <CartItem
+              key={item.id}
+              item={item}
+              onRemove={() => removeItem(item.id)}
+              onUpdateQuantity={(quantity: number) =>
+                updateQuantity(item.id, quantity)
+              }
+            />
+          ))}
         </div>
 
         {/* 오프라인 상태 */}
@@ -161,7 +130,7 @@ export default function CartPage() {
           </div>
         )}
       </div>
-      <div className="fixed bottom-0 left-0 right-0 z-100 bg-white p-4 flex flex-col md:flex-row gap-3 md:gap-4 border-t-2 border-gray-100">
+      <div className="bg-white p-4 flex flex-col md:flex-row gap-3 md:gap-4 border-t-2 border-gray-100">
         <div className="bg-gradient-to-r from-gray-50 to-blue-50 rounded-xl p-3 border border-gray-100">
           <div className="space-y-2">
             <div className="flex items-center justify-between">
