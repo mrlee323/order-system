@@ -143,12 +143,18 @@ export default function MenuDetail({
       <div
         ref={menuInfoRef}
         className={`absolute top-64 h-screen left-0 right-0 z-3 px-4 ${
-          isContentsPositionTop ? "pt-20 pb-32 overflow-y-auto" : " py-4"
+          isContentsPositionTop ? "pt-16 pb-32 overflow-y-auto" : " py-4"
         } bg-white rounded-2xl `}
       >
         {/* 제목 */}
-        <div className={`mb-5 ${isContentsPositionTop ? "hidden" : ""}`}>
-          <h1 className="text-xl font-bold text-gray-800 mb-2">{menu.title}</h1>
+        <div className={`mb-5 `}>
+          <h1
+            className={`text-xl font-bold text-gray-800 mb-2 ${
+              isContentsPositionTop ? "hidden" : ""
+            }`}
+          >
+            {menu.title}
+          </h1>
           <p className="text-sm text-gray-600 leading-relaxed">
             {menu.description}
           </p>
